@@ -1,4 +1,6 @@
-﻿namespace Hack24.Modules
+﻿using Newtonsoft.Json;
+
+namespace Hack24.Modules
 {
     using DataAccess;
     using Nancy;
@@ -16,14 +18,14 @@
 
             Post["/StartGame/{PlayerName}"] = x =>
             {
-                var code = DataStore.StartGame(x.PlayerName);
+                var reference = DataStore.StartGame(x.PlayerName);
 
-                return $"'{x.PlayerName}' has started a game. Game code: {code}";
+                return JsonConvert.SerializeObject(new { reference });
             };
 
             Post["/JoinGame/{GameRef}/{PlayerName}"] = x =>
             {
-                DataStore.JoinGame(x.GameRef, x.PlayerName);
+                DataStore.JoinGame(x.GameRef.ToString().ToUpper(), x.PlayerName);
 
                 return "Joined game!";
             };
