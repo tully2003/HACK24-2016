@@ -39,6 +39,8 @@
             }
 
             SaveSchemaHash(CalulateScriptsHash());
+
+            SeedDb();
         }
 
         public static bool Alive()
@@ -92,6 +94,15 @@
             using (var connection = CreateOpenConnection())
             {
                 connection.Execute("INSERT INTO SchemaVersion(Hash) VALUES(@hash)", param: new { hash });
+            }
+        }
+
+        private static void SeedDb()
+        {
+            using (var conn = CreateOpenConnection())
+            {
+                // TODO: actual useful seed stuff
+                conn.Execute("INSERT INTO Puzzle (Name, EncodedImage) VALUES ('test seed data', '0123456789abcdefghijklmnopqrstuvwxyz')");
             }
         }
     }
