@@ -7,9 +7,10 @@
     {
         public HomeModule()
         {
-            Get["/"] = _ => "Hello world";
-
-            Get["/test"] = _=> "testing";
+            Get["/"] = _ =>
+            {
+                return Store.Alive().ToString();
+            };
 
             Get["/dbtest"] = _ =>
             {
