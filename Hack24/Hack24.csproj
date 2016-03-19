@@ -116,9 +116,20 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assets\catastrophi_tiles_16.png" />
+    <Content Include="Content\assets\coin.png" />
+    <Content Include="Content\assets\gridtiles.png" />
+    <Content Include="Content\assets\spaceman.png" />
+    <Content Include="Content\javascript\all.min.js" />
+    <Content Include="Content\javascript\vendor.js" />
+    <Content Include="index.html" />
     <Content Include="Join.html" />
     <Content Include="Start.html" />
     <Content Include="packages.config" />
+    <Content Include="Content\assets\catastrophi_level2.csv" />
+    <Content Include="Content\assets\map - Copy.json" />
+    <Content Include="Content\assets\map.json" />
+    <Content Include="Content\assets\tilemap_maze.csv" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -159,7 +170,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>58191</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
