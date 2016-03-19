@@ -10,9 +10,10 @@ function preload() {
     game.load.tilemap('map', 'assets/map.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.image('tiles', 'assets/gridtiles.png');
     game.load.spritesheet('player', 'assets/spaceman.png', 16, 16);
+    game.load.spritesheet('coin', 'assets/coin.png', 32, 32);
 
 }
-
+var coins;
 var map;
 var layer;
 var cursors;
@@ -31,7 +32,7 @@ function create() {
     layer = map.createLayer('Tile Layer 1');
 
 
-    map.setCollision([0,99]);
+    map.setCollisionBetween([0,150]);
     //  Resize the world
     layer.resizeWorld();
 
@@ -40,6 +41,11 @@ function create() {
 
     //  Un-comment this on to see the collision tiles
    //layer.debug = true;
+
+    coins = game.add.group();
+    coins.enableBody = true;
+
+    map.createFromObjects('Object Layer 1', 89, 'coin', 0, true, false, coins);
 
     //  Player
     player = game.add.sprite(48, 48, 'player', 1);
@@ -64,6 +70,7 @@ function create() {
 function update() {
 
     game.physics.arcade.collide(player, layer);
+    game.physics.arcade.overlap(player, coins, collectCoin, null, this);
 
     player.body.velocity.set(0);
 
@@ -96,6 +103,12 @@ function update() {
     {
         player.animations.stop();
     }
+
+}
+
+function collectCoin(player, coin) {
+
+    coin.kill();
 
 }
 
