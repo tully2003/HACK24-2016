@@ -11,7 +11,7 @@ function preload() {
     game.load.image('tiles', '/content/assets/gridtiles.png');
     game.load.spritesheet('player', '/content/assets/spaceman.png', 16, 16);
     game.load.spritesheet('coin', '/content/assets/coin.png', 32, 32);
-    game.load.spritesheet('puzzle_piece', '/content/assets/puzzle_piece.png', 32, 32);
+    //game.load.spritesheet('puzzle_piece', '/content/assets/puzzle_piece.png', 32, 32);
 
 }
 var coins;
@@ -25,7 +25,8 @@ var puzzle_pieces;
 function create() {
 
    game.stage.backgroundColor = '#787878';
-
+   
+   game.stage.scale.startFullScreen();
     map = game.add.tilemap('map');
 
     //  Now add in the tileset
@@ -35,17 +36,17 @@ function create() {
     layer = map.createLayer('Tile Layer 1');
 
     //layerObj = map.createLayer('Object Layer 1');
-
+    
 
     map.setCollision([90,99]);
     //  Resize the world
     layer.resizeWorld();
 
     //  Un-comment this on to see the collision tiles
-   //layer.debug = true;
+    //layer.debug = true;
 
     coins = game.add.group();
-    puzzle_pieces = game.add.group();
+    //puzzle_pieces = game.add.group();
 
     coins.enableBody = true;
 
@@ -53,15 +54,15 @@ function create() {
     coins.callAll('animations.add', 'animations', 'spin', [0, 1, 2, 3, 4, 5], 10, true);
     coins.callAll('animations.play', 'animations', 'spin');
 
-    if (coins.children.length > 0) {
-        for (var i = 0; i < coins.children.length; i++) {
+    //if (coins.children.length > 0) {
+    //    for (var i = 0; i < coins.children.length; i++) {
 
-            //game.add.sprite(coins.children[1].world.x, coins.children[0].world.y, 'player', 1);
-        }
-        //game.add.sprite(coins.children[1].world.x, coins.children[0].world.y, 'player', 1);
-    }
+    //        //game.add.sprite(coins.children[1].world.x, coins.children[0].world.y, 'player', 1);
+    //    }
+    //    //game.add.sprite(coins.children[1].world.x, coins.children[0].world.y, 'player', 1);
+    //}
 
-    debugger
+    //debugger
 
     //  Player
     player = game.add.sprite(48, 48, 'player', 1);
