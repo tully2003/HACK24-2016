@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="description" content="">
+</head>
+<body>
+
+<p>Test #1</p>
+
+<script type="text/javascript">
+
+var fn = function(evt) {
+    console.log("jflkdsflds");
+    console.log(evt);
+    var $el = document.createElement("p");
+    $el.textContent = "test";
+    document.body.appendChild($el);
+
+    var parent = window.opener;
+    console.log(parent);
+    parent.postMessage({ cmd: "run" }, "http://localhost:8000");
+};
+
+window.addEventListener("message", fn, false); 
+
+</script>
+
+
+</body>
+
+</html>
+
