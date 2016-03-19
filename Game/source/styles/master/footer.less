@@ -1,0 +1,139 @@
+.site-footer{
+   h4{
+      color:@purple;
+   }
+   address{
+      color:#fff;
+      @media @max-md{
+         br{
+            display:none;
+            &:first-of-type{
+               display:block;
+            }
+         }
+      }
+   }
+}
+
+.site-footer__action-bar{
+   background-color: @purple;
+   padding:@spc 0;
+   .btn{
+      display:block;
+      font-size:20px;
+      @media @max-md{
+         font-size:18px;
+         margin-bottom: 10px;
+      }
+   }
+}
+
+.site-footer__featured-event{
+   text-align: center;
+   padding:@spc 0;
+   font-size:18px;
+   p{
+      margin-bottom: 0;
+   }
+   a{
+      font-weight: bold;
+      text-decoration: underline;
+      &:hover{
+         text-decoration: none;
+      }
+   }
+}
+
+
+.site-footer__main{
+   background-color: @lt-grey;
+   padding:@spc2 0 0;
+   ul{
+      margin-bottom: 20px;
+      padding:0;
+      list-style-type: none;
+      a{
+         display:block;
+      }
+      li ul a{
+         color:#fff;
+      }
+   }
+   @media @max-sm{
+      padding:@spc 0;
+   }
+}
+
+.site-footer__social{
+   text-align: right;
+   h4{
+      color:#fff;      
+      margin-bottom:20px;
+   }
+   a{
+      width:40px;
+      height:40px;
+      display:inline-block;
+      margin-left:10px;
+      background-color: @purple;
+      position: relative;
+      &:hover{
+         text-decoration: none;
+         background-color: lighten(@purple, 5%);
+      }
+      span{
+         display:none;
+      }
+      &:before{
+         content: "\f09a";
+         font-family: FontAwesome;
+         font-style: normal;
+         font-weight: normal;
+         text-decoration: inherit;
+         color:#fff;
+         position: absolute;
+         left:50%;
+         top:50%;
+         transform:translate(-50%,-50%);
+         font-size:18px;
+      }
+      &.facebook:before{
+         content: "\f09a"; 
+      }
+      &.twitter:before{
+         content: "\f099"; 
+      }
+   }
+}
+
+.site-footer__legals{
+   
+   ul{
+      border-top: 1px solid #fff;
+      margin:@spc2 0 0;
+      padding:@spc 0;
+      list-style-type: none;
+      li{
+         display:inline-block;
+         border-left:1px solid #fff;
+         padding:0 10px;
+         &:first-child{
+            padding-left:0;
+            border-left:0px none;
+         }
+      }
+      a{
+         color:#fff;
+         .smalltext;
+      }
+      @media @max-sm{
+         margin:@spc 0 0;
+         text-align: center;
+         li{
+            width:45%;
+            border:0;
+            padding-top:10px;
+         }
+      }
+   }
+}

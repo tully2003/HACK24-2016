@@ -1,0 +1,788 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"timelin",
+				"timeline-list"
+			],
+			[
+				"media-",
+				"media-preview__date"
+			],
+			[
+				"center",
+				"centerXY"
+			],
+			[
+				"over",
+				"overflow"
+			],
+			[
+				"tec",
+				"techspec_expanded"
+			],
+			[
+				"trans",
+				"translateX"
+			],
+			[
+				"stop",
+				"stopPropagation"
+			],
+			[
+				"pre",
+				"preventDefault"
+			],
+			[
+				"tex",
+				"text-transform"
+			],
+			[
+				"perce",
+				"percentLoaded"
+			],
+			[
+				"inlin",
+				"inline-block"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"expand-",
+				"expand-text-content"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"screen-",
+				"screen-sm-max"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"lisstp",
+				"list-style-type"
+			],
+			[
+				"step-",
+				"step-list"
+			],
+			[
+				"box",
+				"box-sizing"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "source/javascript/scripts.js",
+			"settings":
+			{
+				"buffer_size": 1833,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/chris.rickels/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 309,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 185.0,
+		"last_filter": "install ",
+		"selected_items":
+		[
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"install pa",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 478.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/chris.rickels/Desktop/HACK24",
+		"/C/Users/chris.rickels/Desktop/HACK24/output",
+		"/C/Users/chris.rickels/Desktop/HACK24/source",
+		"/C/Users/chris.rickels/Desktop/HACK24/source/html",
+		"/C/Users/chris.rickels/Desktop/HACK24/source/html/includes",
+		"/C/Users/chris.rickels/Desktop/HACK24/source/html/includes/foot",
+		"/C/Users/chris.rickels/Desktop/HACK24/source/html/includes/head",
+		"/C/Users/chris.rickels/Desktop/HACK24/source/html/includes/structure",
+		"/C/Users/chris.rickels/Desktop/HACK24/source/html/master",
+		"/C/Users/chris.rickels/Desktop/HACK24/source/html/pages",
+		"/C/Users/chris.rickels/Desktop/HACK24/source/images",
+		"/C/Users/chris.rickels/Desktop/HACK24/source/javascript"
+	],
+	"file_history":
+	[
+		"/C/Users/chris.rickels/Desktop/HACK24/source/html/pages/t1-home.swig",
+		"/C/Users/chris.rickels/Desktop/HACK24/source/html/includes/structure/footer.swig",
+		"/C/Users/chris.rickels/Desktop/HACK24/source/javascript/vendor.js",
+		"/C/Users/chris.rickels/Desktop/HACK24/output/index1.html",
+		"/C/Users/chris.rickels/Desktop/HACK24/output/index.html",
+		"/C/Users/chris.rickels/Desktop/HACK24/source/html/includes/head/meta.swig",
+		"/C/Users/chris.rickels/Desktop/HACK24/source/html/includes/head/js.swig",
+		"/C/Users/chris.rickels/Desktop/HACK24/source/html/pages/index.swig",
+		"/C/Users/chris.rickels/Desktop/HACK24/source/html/includes/structure/site-header.swig",
+		"/C/Repositories/UnionSquare/output/t7.html",
+		"/C/Repositories/UnionSquare/output/t10.html",
+		"/C/Repositories/UnionSquare/source/html/includes/structure/footer.swig",
+		"/C/Repositories/UnionSquare/source/styles/master/type.less",
+		"/C/Repositories/UnionSquare/source/html/includes/structure/navigation.swig",
+		"/C/Repositories/UnionSquare/source/styles/stylesheet.less",
+		"/C/Repositories/UnionSquare/source/html/pages/t2-1.swig",
+		"/C/Repositories/UnionSquare/source/html/pages/t10-2.swig",
+		"/C/Repositories/UnionSquare/source/html/pages/index.swig",
+		"/C/Repositories/UnionSquare/source/html/pages/t9.swig",
+		"/C/Repositories/UnionSquare/source/html/pages/t10.swig",
+		"/C/Repositories/UnionSquare/source/html/pages/t8.swig",
+		"/C/Repositories/UnionSquare/source/html/pages/t6.swig",
+		"/C/Repositories/UnionSquare/source/html/pages/t2-2.swig",
+		"/C/Repositories/UnionSquare/source/html/pages/t1-home.swig",
+		"/C/Repositories/UnionSquare/source/html/pages/type.swig",
+		"/C/Repositories/UnionSquare/gulpfile.js",
+		"/C/Repositories/UnionSquare/package.json",
+		"/C/Repositories/UnionSquare/source/javascript/scripts.js",
+		"/C/Repositories/UnionSquare/source/styles/master/_utilities.less",
+		"/C/Repositories/UnionSquare/source/html/includes/structure/site-header.swig",
+		"/C/Repositories/UnionSquare/source/styles/master/footer.less",
+		"/C/Repositories/UnionSquare/source/styles/master/_variables.less",
+		"/C/Repositories/UnionSquare/source/styles/master/nav.less",
+		"/C/Users/chris.rickels/Desktop/reporting.html",
+		"/C/Users/chris.rickels/Desktop/reporting_files/stylesheet.css",
+		"/C/Repositories/UnionSquare/source/html/includes/foot/js.swig",
+		"/C/Repositories/UnionSquare/source/javascript/vendor.js",
+		"/C/Repositories/UnionSquare/source/styles/main.less",
+		"/C/Repositories/UnionSquare/source/html/includes/head/js.swig",
+		"/C/Repositories/UnionSquare/output/index.html",
+		"/C/Repositories/UnionSquare/output/css/stylesheet.css",
+		"/C/Repositories/UnionSquare/gulpfile_old.js",
+		"/C/Repositories/Aqualisa-HTML/source/html/includes/head/js.swig",
+		"/C/Users/chris.rickels/Downloads/bootstrap-3.3.6-dist/css/bootstrap.min.css",
+		"/C/Repositories/UnionSquare/source/javascript/vendor/init.standard.js",
+		"/C/Users/chris.rickels/AppData/Local/Temp/ai14570992911.tmp/ai14570992911.txt",
+		"/C/Users/chris.rickels/AppData/Local/Temp/ai14570993062.tmp/ai14570993062.txt",
+		"/C/Repositories/Aqualisa-HTML/source/javascript/scripts.js",
+		"/C/Repositories/Aqualisa-HTML/source/html/includes/structure/tech-spec.swig",
+		"/C/Users/chris.rickels/Downloads/bootstrap.css",
+		"/C/Users/chris.rickels/Downloads/bootstrap (1).css",
+		"/C/Users/chris.rickels/Downloads/bootstrap-additional (2).css",
+		"/C/Repositories/Aqualisa-HTML/output/js/all.min.js",
+		"/C/Repositories/Aqualisa-HTML/output/t4-1.html",
+		"/C/Users/chris.rickels/Desktop/CHOOSE NAV",
+		"/C/Repositories/Aqualisa-HTML/source/html/includes/structure/navigation.swig",
+		"/C/Repositories/Aqualisa-HTML/source/html/includes/structure/footer.swig",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/C/Users/chris.rickels/Desktop/snippets.txt",
+		"/C/Users/chris.rickels/Desktop/New Text Document.txt",
+		"/C/Users/chris.rickels/Desktop/Distinction Redesign/css.txt",
+		"/C/Repositories/Aqualisa-HTML/source/styles/theme.less",
+		"/C/Repositories/Aqualisa-HTML/output/css/stylesheet.css",
+		"/C/Repositories/Aqualisa-HTML/source/styles/master/sidenav.less",
+		"/C/Repositories/Aqualisa-HTML/source/styles/master/faqs.less",
+		"/C/Repositories/Aqualisa-HTML/source/styles/master/techspec.less",
+		"/C/Repositories/Aqualisa-HTML/source/styles/master/forms.less",
+		"/C/Repositories/Aqualisa-HTML/source/html/pages/t4-1.swig",
+		"/C/Users/chris.rickels/Downloads/bootstrap-additional (1).css",
+		"/C/Users/chris.rickels/Downloads/bootstrap-additional.css",
+		"/C/Repositories/Aqualisa-HTML/source/html/master/default.swig",
+		"/C/Repositories/Aqualisa-HTML/source/styles/master/hero.less",
+		"/C/Repositories/Aqualisa-HTML/source/styles/master/footer.less",
+		"/C/Repositories/Aqualisa-HTML/source/styles/master/video.less",
+		"/C/Repositories/Aqualisa-HTML/source/styles/master/location.less",
+		"/C/Repositories/Aqualisa-HTML/source/styles/master/spares.less",
+		"/C/Repositories/Aqualisa-HTML/source/styles/master/expand.less",
+		"/C/Repositories/Aqualisa-HTML/source/styles/master/nav.less",
+		"/C/Users/chris.rickels/Downloads/magiczoom (1).js",
+		"/C/Repositories/Aqualisa-HTML/source/javascript/vendor/magiczoom.js",
+		"/C/Repositories/Aqualisa-HTML/source/styles/core/navs.less",
+		"/C/Repositories/Aqualisa-HTML/source/styles/master/product-config.less",
+		"/C/Repositories/dmh-direct-html/gulpfile.js",
+		"/C/Repositories/dmh-direct-html/gulp-user.json",
+		"/C/Repositories/Aqualisa-HTML/source/javascript/vendor.js",
+		"/C/Repositories/Aqualisa-HTML/source/styles/master/product.less",
+		"/C/Repositories/Aqualisa-HTML/source/styles/master/stepselector.less",
+		"/C/Repositories/Aqualisa-HTML/source/styles/stylesheet.less",
+		"/C/Repositories/Aqualisa-HTML/source/styles/core/variables.less",
+		"/C/Repositories/Aqualisa-HTML/source/styles/master/pagination.less",
+		"/C/Repositories/Aqualisa-HTML/source/styles/master/further-reading.less",
+		"/C/Repositories/Aqualisa-HTML/source/styles/master/basket.less",
+		"/C/Repositories/Aqualisa-HTML/source/styles/core/dropdowns.less",
+		"/C/Repositories/Aqualisa-HTML/source/html/includes/structure/pagination.swig",
+		"/C/Users/chris.rickels/AppData/Local/Temp/ai145561792211.tmp/ai145561792211.txt",
+		"/C/Users/chris.rickels/AppData/Local/Temp/ai145561910219.tmp/ai145561910219.txt",
+		"/C/Repositories/Aqualisa-HTML/source/styles/master/home.less",
+		"/C/Repositories/Aqualisa-HTML/gulpfile.js",
+		"/C/Repositories/Aqualisa-HTML/package.json",
+		"/C/Repositories/Aqualisa-HTML/source/styles/master/home-hero.less",
+		"/C/Repositories/Aqualisa-HTML/source/html/includes/structure/home-hero.swig",
+		"/C/Repositories/Aqualisa-HTML/source/styles/master/page-filter.less",
+		"/C/Repositories/Aqualisa-HTML/source/styles/core/theme.less",
+		"/C/Repositories/Aqualisa-HTML/source/styles/components/yamm.less",
+		"/C/Users/chris.rickels/Desktop/compare.js",
+		"/C/Users/chris.rickels/AppData/Local/Temp/ai145518747422.tmp/ai145518747422.txt",
+		"/C/Repositories/Aqualisa-HTML/source/html/pages/t1.swig",
+		"/C/Repositories/Aqualisa-HTML/source/html/pages/index.swig",
+		"/C/Repositories/Aqualisa-HTML/output/t10.html",
+		"/C/Repositories/Aqualisa-HTML/source/javascript/bootstrap.js",
+		"/C/Users/chris.rickels/Desktop/menu-mixer.svg",
+		"/C/Users/chris.rickels/AppData/Local/Temp/ai145518818527.tmp/ai145518818527.txt",
+		"/C/Repositories/Aqualisa-HTML/source/html/pages/partials/shared/blurb.swig",
+		"/C/Repositories/Aqualisa-HTML/source/styles/master/customercare.less",
+		"/C/Repositories/Aqualisa-HTML/source/styles/master/inspiration.less",
+		"/C/Users/chris.rickels/AppData/Local/Temp/ai14550992585.tmp/ai14550992585.txt",
+		"/C/Repositories/Aqualisa-HTML/output/t24.html",
+		"/C/Repositories/Aqualisa-HTML/source/styles/master/range.less",
+		"/C/Repositories/Aqualisa-HTML/source/styles/core/forms.less",
+		"/C/Users/chris.rickels/AppData/Local/Temp/ai145501472910.tmp/ai145501472910.txt",
+		"/C/Repositories/Aqualisa-HTML/output/t2.html",
+		"/C/Repositories/Aqualisa-HTML/output/t15.html",
+		"/C/Repositories/Aqualisa-HTML/output/t21.html",
+		"/C/Repositories/Aqualisa-HTML/source/html/pages/t6-3.swig",
+		"/C/Users/chris.rickels/AppData/Local/Temp/ai145501723718.tmp/ai145501723718.txt",
+		"/C/Repositories/Aqualisa-HTML/source/styles/core/button-groups.less",
+		"/C/Repositories/Aqualisa-HTML/source/styles/master/account.less",
+		"/C/Repositories/Aqualisa-HTML/source/html/pages/sizes.swig"
+	],
+	"find":
+	{
+		"height": 43.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			"C:\\Repositories\\UnionSquare\\source",
+			"C:\\Repositories\\Aqualisa-HTML\\source",
+			"<project>,-*node_modules",
+			"<project>",
+			"C:\\Repositories\\Aqualisa-HTML\\source\\styles,C:\\Repositories\\Aqualisa-HTML\\source",
+			"C:\\Repositories\\Aqualisa-HTML\\source\\styles"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"footer__action",
+			"<div class=\"col-md-6\">\n			<img src=\"http://placehold.it/600x300\" class=\"img-responsive\" />\n		</div>",
+			"slick-prev",
+			"hero-static",
+			"header-nav",
+			"select",
+			"screen-lg-max",
+			"share-blo",
+			"select",
+			"bread",
+			"/",
+			"image",
+			"header-nav",
+			"img",
+			"images",
+			"less",
+			"js",
+			"jquery.min",
+			"'),\n",
+			"jquery",
+			".title-holde",
+			".btn",
+			".nav-parts-categories",
+			".slider-container",
+			".slider-container .text-right",
+			".slider-container",
+			"rgba(0,0,0,1) 100%)",
+			"rgba(255,255,255,1)",
+			"magiczoom",
+			".expand-text",
+			"nav.reveal",
+			".FieldLabel",
+			".action-buttons",
+			".date-time-picker",
+			"step",
+			".menu-image",
+			".techspec-reassurance",
+			".techspecifications",
+			"product-part",
+			".product",
+			".faux-link",
+			"basket-icon.svg",
+			"svg",
+			".techspecifications",
+			"single-reassurance h4",
+			".single-reassurance",
+			"single-reassurance",
+			".spares",
+			"basket-icon",
+			"selector",
+			".faq-question",
+			"10px",
+			".sidenav",
+			".slider-container",
+			"equalHeight",
+			"slick",
+			"resize",
+			"equal",
+			"search-tabs",
+			".search-result-item",
+			".search-holder",
+			"search-holder",
+			".nav-search",
+			".equal",
+			"product-text",
+			".hero-content",
+			"div[id*='AqualisaPageBottomHero']",
+			".social-foot",
+			".video-tile",
+			"pikad",
+			".product-config",
+			".btn + .btn",
+			".btn + ",
+			".btn",
+			"console",
+			"8000portport",
+			"console",
+			"equal",
+			"step-item-tall",
+			"equal",
+			"resize",
+			"console.log",
+			".step-item-tall",
+			"step-item-tall",
+			".expand",
+			"PaleVioletRed",
+			"pikaday",
+			"@brand-font",
+			"brandon",
+			"typekit",
+			"brandon-grotesque",
+			"body{",
+			"body",
+			".datetime-ui-datepicker",
+			".basket",
+			"basket",
+			".RemoveButton",
+			".spares",
+			"magic",
+			"table{",
+			"table",
+			"magiczoom",
+			".brochuretype",
+			".checkbox-list-horizontal",
+			"font-size: 22px",
+			"label",
+			".privacy-foot",
+			"pconfig-body-head",
+			".pconfig-body-head",
+			".pconfig-features",
+			"wheretobuy-input",
+			".config-find",
+			"EditingFormTable",
+			".app-figure",
+			".nav-parts-categories",
+			"hero-5050",
+			".hero",
+			".formstyle",
+			"z-index: 1001;",
+			".hero",
+			".icon-feature",
+			".double",
+			"dark-tile-wash",
+			".map-tile",
+			".menu-image",
+			"margin-top: 90px",
+			"margin-top: 70px",
+			"margin-top:70px"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"<div class=\"col-md-6 pb\">\n			<img src=\"http://placehold.it/600x300\" class=\"img-responsive\" />\n		</div>",
+			"site-nav",
+			"#f2aa3c",
+			"#ffdf2c",
+			"$$\\n$$",
+			"col-lg-4",
+			"<li>",
+			"col-md-8",
+			"col-md-4",
+			"<input type=\"number\" min=\"0\" step=\"1\" />",
+			"£5.99 VAT",
+			"",
+			"</td>",
+			"</th>",
+			"",
+			"<img src=\"http://placehold.it/600x400\" alt=\"alt-tag\" class=\"\">\n					",
+			"<img src=\"http://placehold.it/600x400\" alt=\"alt-tag\" class=\"\" style=\"display:none\">",
+			"product-item",
+			"col-lg-9",
+			"col-lg-3",
+			"<label class=\"hidden-sm\">Qty:</label>",
+			"",
+			"http://placehold.it/600x400",
+			"",
+			"placehold.it/900x500",
+			"<p class=\"filter-tags\">NAME OF FILTER</p>\n			    <p class=\"inspiration-view\"><a href=\"#\">View Product</a></p>",
+			"<div class=\"element-item-text popup-text\">",
+			"1000x800/image.jpg",
+			"<a href=\"http://placehold.it/1400x1600/image.jpg\" class=\"faux-link fancybox\"></a>",
+			"element-item-content fancybox\"",
+			"step-item step-item-type2",
+			"step-item step-item-tall",
+			"http://placehold.it/300x300",
+			"",
+			" data-category=\"filter2\"",
+			" data-category=\"filter3\"",
+			"data-category=\"filter2\"",
+			"",
+			"filter3",
+			"",
+			"filter3",
+			"filter5",
+			"filter4",
+			"filter3",
+			"filter1",
+			"filter2"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "source/javascript/scripts.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1833,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								278,
+								278
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete": false,
+							"bh_regions":
+							[
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 3,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/Users/chris.rickels/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 309,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								309,
+								309
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete": true,
+							"bh_regions":
+							[
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
+							],
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 458.0
+	},
+	"pinned_build_system": "",
+	"project": "HACK24.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"t7",
+				"output\\t7.html"
+			],
+			[
+				"nav",
+				"source\\styles\\master\\nav.less"
+			],
+			[
+				"mai",
+				"source\\styles\\main.less"
+			],
+			[
+				"t10",
+				"output\\t10.html"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 35.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 520.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 122.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
