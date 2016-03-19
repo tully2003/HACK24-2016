@@ -7,14 +7,24 @@
     {
         public HomeModule()
         {
-            Get["/"] = _ =>
+            Get["/"] = _ => "Hello world";
+            Get["/dbtest"] = _ =>
             {
                 return Store.Alive().ToString();
             };
 
-            Get["/dbtest"] = _ =>
+            Post["/StartGame/{PlayerName}"] = x =>
             {
-                return Store.Alive().ToString();
+                var code = DataStore.StartGame(x.PlayerName);
+
+                return $"'{x.PlayerName}' has started a game. Game code: {code}";
+            };
+
+            Post["/JoinGame/{GameRef}/{PlayerName}"] = x =>
+            {
+                DataStore.JoinGame(x.GameRef, x.PlayerName);
+
+                return "Joined game!";
             };
         }
     }
