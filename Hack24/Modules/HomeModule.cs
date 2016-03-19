@@ -7,6 +7,8 @@
         public HomeModule()
         {
             Get["/"] = _ => "Hello world";
+
+            Get["/test"] = _ => "testing";
         }
     }
 }
