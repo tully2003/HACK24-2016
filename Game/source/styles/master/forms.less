@@ -1,0 +1,121 @@
+//forms
+select{
+	border:1px solid @col-border;
+	padding:10px;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size:16px;
+	flex-grow: 1;
+	background-color: transparent;
+	-webkit-appearance:none;
+	background-image: url('/images/triangle-down.svg');
+	background-size: 10px 10px;
+	background-position: right center;
+	background-repeat: no-repeat;
+	padding-right:15px;
+}
+
+input[type=text]{
+	border:1px solid @col-border;
+	padding:10px;
+	font-size:16px;
+	outline:none;
+}
+textarea{
+	border:1px solid @col-border;
+	padding:10px;
+	font-size:16px;	
+	outline:none;
+	min-height: 10em;
+}
+
+input[type=text]:focus,textarea:focus{
+	border-color: @purple;
+}
+
+input[type=checkbox]{
+	display:inline-block;
+	vertical-align: middle;
+	margin-top:0;
+	margin-right: 10px;
+	& + label{
+		display:inline-block;
+	}
+}
+label{
+	font-weight: normal;
+}
+
+//FILTER FIELDS
+.page-filter__field{
+	display:flex;	
+    align-items: center;    
+    justify-content: center;
+    padding:0 10%;
+	label{
+		margin-right:10px;
+	}
+	select{
+		border:1px solid @col-border;
+		padding:10px;
+		text-transform: uppercase;
+		font-weight: bold;
+		font-size:16px;
+		flex-grow: 1;
+		background-color: transparent;
+	}
+	@media @max-sm{
+		padding:10px 0;
+	}
+}
+
+
+.flex-form{
+	.form-field{
+		display:flex;
+		margin-bottom: @spc;
+    	align-items: flex-start; 
+		label{
+			width:160px;
+			font-weight: normal;
+			margin-top:1em;
+		}
+		input,textarea{
+			flex-grow: 1;
+		}
+		@media @max-sm{
+			display:block;
+			margin-bottom: 0;
+			input,textarea,select{
+				width:100%;
+			}
+		}
+	}
+}
+
+.basic-form{
+	select,input[type=text],textarea{
+		width:100%;
+	}
+	.form-field{
+		margin-top:@spc;
+	}
+}
+
+.recaptcha{
+	background-image: url('/images/recaptcha.gif');
+	width:250px;
+	height:70px;
+	display:inline-block;
+	background-size: contain;
+	background-position: top right;
+	background-repeat: no-repeat;
+	margin-right: 10px;
+	vertical-align: top;
+	margin-top: -5px;
+	@media @max-sm{
+		width:100%;
+		height:100px;
+		background-position: center;
+	}
+}
