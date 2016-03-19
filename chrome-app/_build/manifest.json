@@ -1,0 +1,16 @@
+{
+    "name": "Hack 24 #Superclub yeh?",
+    "description": "STEALTH FinTech",
+    "version": "0.1",
+    "manifest_version": 2,
+    "app": {
+        "background": {
+            "scripts": ["background.js"]
+        }
+    },
+    "icons": {},
+    "permissions": [
+        "system.display",
+    	"http://localhost:58191/"
+    ]
+}

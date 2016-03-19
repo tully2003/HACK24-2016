@@ -4,11 +4,11 @@ chrome.app.runtime.onLaunched.addListener(function() {
 
 	var display = displays[1];
     
-	chrome.app.window.create("pages/Start.html", {
+	chrome.app.window.create("src/pages/Start.html", {
 	    'state': 'fullscreen'
 	});
 
-	chrome.app.window.create('index.html', {
+	chrome.app.window.create('_build/index.html', {
 	    'outerBounds': {
 		'left': display.bounds.left,
 		'top': 0 
