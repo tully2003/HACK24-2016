@@ -10,6 +10,7 @@
     },
     "icons": {},
     "permissions": [
-        "system.display"
+        "system.display",
+    	"http://localhost:58191/"
     ]
 }
