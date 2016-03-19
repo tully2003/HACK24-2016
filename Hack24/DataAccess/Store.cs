@@ -7,12 +7,13 @@
     using System.IO;
     using System.Linq;
     using System.Web;
+    using System.Web.Hosting;
     using Dapper;
 
     public class Store
     {
         private const string DbName = "Hack24.sqlite";
-        private const string SetupScript = "DataAccess/Scripts/setup.sql";
+        private const string SetupScript = "~/DataAccess/Scripts/setup.sql";
         private const string CugConnectionString = "Data Source=" + DbName + ";Version=3;";
 
         static Store()
@@ -32,7 +33,7 @@
 
             using (var connection = CreateOpenConnection())
             {
-                string up = File.ReadAllText(SetupScript);
+                string up = File.ReadAllText(HostingEnvironment.MapPath(SetupScript));
                 connection.Execute(up);
             }
         }
