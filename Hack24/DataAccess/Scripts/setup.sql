@@ -1,4 +1,8 @@
-﻿CREATE TABLE Game (
+﻿CREATE TABLE SchemaVersion (
+    Hash TEXT NOT NULL
+);
+
+CREATE TABLE Game (
     Id INTEGER PRIMARY KEY AUTOINCREMENT,
     UniqueReference TEXT NOT NULL,
     Host INT NULL,
@@ -10,4 +14,4 @@ CREATE TABLE Player (
     Name TEXT NOT NULL,
     GameId INTEGER NULL,
     FOREIGN KEY(GameId) REFERENCES Game(Id)
-);
+);  

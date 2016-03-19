@@ -10,7 +10,6 @@ namespace Hack24.Modules
         public HomeModule()
         {
             Get["/"] = _ => "Hello world";
-
             Get["/dbtest"] = _ =>
             {
                 return Store.Alive().ToString();

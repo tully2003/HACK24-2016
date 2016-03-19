@@ -1,0 +1,43 @@
+.centerY{
+	position:absolute;
+	top:50%;
+	transform:translateY(-50%);
+}
+.centerX{
+	position:absolute;
+	left:50%;
+	transform:translateX(-50%);
+}
+.centerXY{
+	position:absolute;
+	left:50%;
+	top:50%;
+	transform:translate(-50%, -50%);
+}
+
+.expand-to-fit{
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+}
+
+.crop-circle{
+	border-radius: 50%;
+	overflow: hidden;
+	img{
+		width:100%;
+	}
+}
+
+.fa(@code){
+	content: @code;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+}
+.rotate(@deg){
+	transform:rotateZ(@deg);
+}
