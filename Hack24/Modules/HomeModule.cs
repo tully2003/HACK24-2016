@@ -20,6 +20,13 @@
 
                 return $"'{x.PlayerName}' has started a game. Game code: {code}";
             };
+
+            Post["/JoinGame/{GameRef}/{PlayerName}"] = x =>
+            {
+                DataStore.JoinGame(x.GameRef, x.PlayerName);
+
+                return "Joined game!";
+            };
         }
     }
 }
