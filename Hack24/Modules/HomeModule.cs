@@ -1,5 +1,6 @@
 ﻿namespace Hack24.Modules
 {
+    using DataAccess;
     using Nancy;
 
     public class HomeModule : NancyModule
@@ -8,7 +9,12 @@
         {
             Get["/"] = _ => "Hello world";
 
-            Get["/test"] = _ => "testing";
+            Get["/test"] = _=> "testing";
+
+            Get["/dbtest"] = _ =>
+            {
+                return Store.Alive().ToString();
+            };
         }
     }
 }
