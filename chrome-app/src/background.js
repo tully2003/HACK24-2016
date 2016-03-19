@@ -1,7 +1,3 @@
-var getInfoDone = function(result) {
-
-};
-
 chrome.app.runtime.onLaunched.addListener(function() {
 
    chrome.system.display.getInfo(function(displays) {
