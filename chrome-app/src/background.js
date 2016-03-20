@@ -10,6 +10,17 @@ chrome.app.runtime.onLaunched.addListener(function() {
             w.sendMessage("moveLeft");
         });    
 
+    chrome.app.window.create("pages/maze.html", {
+        'id': 'primary',
+        'state': 'fullscreen'
+    });
+
+    chrome.app.window.create("pages/puzzle.html", {
+        'id': 'secondary',
+            'state': 'fullscreen'
+    });
+
+/*
 	chrome.app.window.create("pages/Start.html", {
 	    'id': 'primary',
             'state': 'fullscreen'
@@ -22,7 +33,7 @@ chrome.app.runtime.onLaunched.addListener(function() {
 		'top': 0 
 	    },
             'state': 'fullscreen'
-	});
+	});*/
 	
    }); 
 });
