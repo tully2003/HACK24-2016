@@ -134,7 +134,7 @@ namespace Hack24
 
             while (true)
             {
-                var maxPieces = (_players.Count / 2) + 1;
+                var maxPieces = _players.Count + 2;
 
                 var numberOfPiecesCurrently = _pieces.Count;
 
