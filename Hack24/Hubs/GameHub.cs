@@ -93,5 +93,11 @@ namespace Hack24.Hubs
         {
             Clients.All.playerJoined(player);
         }
+
+        public object GetGameState()
+        {
+            var state = GameCoordinator.Instance.Game.GetGameState();
+            return state;
+        }
     }
 }
