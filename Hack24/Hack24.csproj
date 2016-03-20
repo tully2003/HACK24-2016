@@ -156,6 +156,7 @@
     <Content Include="Content\js\phaser.min.js" />
     <Content Include="index.html" />
     <Content Include="Join.html" />
+    <Content Include="puzzle.html" />
     <Content Include="Views\index_.html" />
     <Content Include="Views\xxx.html" />
     <None Include="Content\js\jquery-1.6.4-vsdoc.js" />
