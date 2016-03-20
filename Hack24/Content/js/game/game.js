@@ -28,7 +28,7 @@ Packed24.Game.prototype = {
       this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
       this.game.stage.backgroundColor = '#787878';
-      this.game.stage.backgroundImage =
+      //this.game.stage.backgroundImage =
 
       this.game.add.sprite(0, 0, 'background');
 
@@ -42,12 +42,12 @@ Packed24.Game.prototype = {
       //  Create our layer
       layer = map.createLayer('Collision');
 
-      map.setCollision([52]);
+      map.setCollision([4]);
       //  Resize the world
       layer.resizeWorld();
 
       //  Un-comment this on to see the collision tiles
-      layer.debug = true;
+      // layer.debug = true;
 
       //  Player
       this.createPlayer();
