@@ -1,7 +1,12 @@
 $(function(){
 
     $('#play').click(function() {
-        chrome.runtime.sendMessage('game.create');
+        
+        $('.content').remove();
+
+        Packed24.Start();
+
+        //chrome.runtime.sendMessage('game.create');
 
         chrome.app.window.create("pages/puzzle.html", {
             'id': 'secondary',
