@@ -128,9 +128,20 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assets\background.png" />
     <Content Include="Content\assets\catastrophi_tiles_16.png" />
     <Content Include="Content\assets\coin.png" />
+    <Content Include="Content\assets\council_tiles.png" />
     <Content Include="Content\assets\gridtiles.png" />
+    <Content Include="Content\assets\puzzle\0.jpg" />
+    <Content Include="Content\assets\puzzle\1.jpg" />
+    <Content Include="Content\assets\puzzle\2.jpg" />
+    <Content Include="Content\assets\puzzle\3.jpg" />
+    <Content Include="Content\assets\puzzle\4.jpg" />
+    <Content Include="Content\assets\puzzle\5.jpg" />
+    <Content Include="Content\assets\puzzle\6.jpg" />
+    <Content Include="Content\assets\puzzle\7.jpg" />
+    <Content Include="Content\assets\puzzle\8.jpg" />
     <Content Include="Content\assets\spaceman.png" />
     <Content Include="Content\assets\tiles_hack24.png" />
     <Content Include="Content\javascript\phaser.js" />
