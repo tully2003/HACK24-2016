@@ -162,8 +162,8 @@ namespace Hack24
                     
                 }
 
-                var maxTimeToWait = 5000;
-                var minTimeToWait = 500;
+                var maxTimeToWait = 3000;
+                var minTimeToWait = 300;
                 Thread.Sleep(random.Next(minTimeToWait, maxTimeToWait));
             }
         }
