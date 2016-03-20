@@ -11,13 +11,13 @@ chrome.app.runtime.onLaunched.addListener(function() {
         });    
 
     chrome.app.window.create("pages/maze.html", {
-        'id': 'primary',
-        'state': 'fullscreen'
+        'id': 'primary'
+        // 'state': 'fullscreen'
     });
 
     chrome.app.window.create("pages/puzzle.html", {
-        'id': 'secondary',
-            'state': 'fullscreen'
+        'id': 'secondary'
+        // 'state': 'fullscreen'
     });
 
 /*
