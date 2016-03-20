@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using Hack24.Hubs;
+using Microsoft.AspNet.SignalR;
+using Microsoft.AspNet.SignalR.Hubs;
 
 namespace Hack24
 {
@@ -12,7 +15,7 @@ namespace Hack24
         Complete
     }
 
-    public class GameMaze
+    public class Game
     {
         private byte[][] _board;
         private int _boardWidth;
@@ -25,6 +28,7 @@ namespace Hack24
         private DataStore.Puzzle _puzzle;
         private string _gameRef;
         private GameState _state;
+        private IHubContext _hub;
 
         private class Player
         {
@@ -66,19 +70,18 @@ namespace Hack24
             public int X { get; set; }
             public int Y { get; set; }
         }
-        
-        public GameMaze(string hostPlayerName)
-        {
-            _gameRef = DataStore.StartGame(hostPlayerName);
-            _puzzle = DataStore.GetPuzzle();
 
-          _board = new[]
-          {
-              new byte[] { 0, 0, 1, 0, 0}, 
-              new byte[] { 0, 0, 1, 0, 0}, 
-              new byte[] { 0, 0, 0, 0, 0}, 
-              new byte[] { 0, 1, 1, 1, 1}, 
-              new byte[] { 0, 0, 1, 0, 0} 
+        public Game(string hostPlayerName)
+        {
+            _hub = GlobalHost.ConnectionManager.GetHubContext<GameHub>();
+
+            _board = new[]
+            {
+              new byte[] { 0, 0, 1, 0, 0},
+              new byte[] { 0, 0, 1, 0, 0},
+              new byte[] { 0, 0, 0, 0, 0},
+              new byte[] { 0, 1, 1, 1, 1},
+              new byte[] { 0, 0, 1, 0, 0}
           };
 
             _boardWidth = _board[0].Length;
@@ -86,9 +89,17 @@ namespace Hack24
 
             _players = new List<Player>();
             _pieces = new List<Piece>();
+            _lock = new object();
 
             _state = GameState.WaitingToStart;
+
+            _gameRef = DataStore.StartGame(hostPlayerName);
+            AddPlayer(hostPlayerName);
+            _puzzle = DataStore.GetPuzzle();
+            _puzzle = DataStore.GetPuzzle();
         }
+
+        public IHubConnectionContext<object> Clients { get; set; }
 
         public void GameStart()
         {
@@ -120,7 +131,7 @@ namespace Hack24
 
             while (true)
             {
-                var maxPieces = (_players.Count/2)+1;
+                var maxPieces = (_players.Count / 2) + 1;
 
                 var numberOfPiecesCurrently = _pieces.Count;
 
@@ -185,7 +196,9 @@ namespace Hack24
                 return false;
             }
 
-            _players.Add(new Player(playerName, _boardWidth/2, _boardHeight/2));
+            DataStore.JoinGame(_gameRef, playerName);
+
+            _players.Add(new Player(playerName, _boardWidth / 2, _boardHeight / 2));
 
             NotifyOfNewPlayer(playerName);
 
@@ -236,9 +249,9 @@ namespace Hack24
         {
         }
 
-        private void NotifyOfPieceAdded(int pieceId, int i, int i1, string encodedImage)
+        private void NotifyOfPieceAdded(int pieceId, int x, int y, string encodedImage)
         {
-            throw new NotImplementedException();
+            _hub.PlaceMazePiece.Clients.All.placeMazePiece(pieceId, x, y, encodedImage);
         }
     }
 }

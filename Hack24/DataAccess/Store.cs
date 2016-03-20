@@ -103,7 +103,7 @@
             {
                 // TODO: actual useful seed stuff
                 conn.Execute("INSERT INTO Puzzle (Name, EncodedImage) VALUES ('testPuzzle', '0123456789abcdefghijklmnopqrstuvwxyz')");
-                var puzzleId = conn.Query<int>("SELECT TOP 1 Id FROM Puzzle");
+                var puzzleId = conn.Query<int>("SELECT Id FROM Puzzle").First();
                 conn.Execute($"INSERT INTO Piece (PuzzleId, Position, EncodedImage) VALUES ({puzzleId}, 1, '10123456789abcdefghijklmnopqrstuvwxyz')");
                 conn.Execute($"INSERT INTO Piece (PuzzleId, Position, EncodedImage) VALUES ({puzzleId}, 2, '20123456789abcdefghijklmnopqrstuvwxyz')");
                 conn.Execute($"INSERT INTO Piece (PuzzleId, Position, EncodedImage) VALUES ({puzzleId}, 3, '30123456789abcdefghijklmnopqrstuvwxyz')");

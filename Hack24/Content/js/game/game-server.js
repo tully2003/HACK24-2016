@@ -28,6 +28,11 @@ var gs = (function($) {
                 gs.onGameStarted();
         };
 
+        client.placeMazePiece = function (mazePieceId, xCoordinate, yCoordinate, encodedImage) {
+            alert('new piece!');
+            gs.onMazePlaceAdded(mazePieceId, xCoordinate, yCoordinate, encodedImage);
+        }
+        
         client.mazePieceCollected = function () {
             if (typeof gs.onMazePieceCollected === 'function')
                 gs.onMazePieceCollected();
@@ -44,18 +49,22 @@ var gs = (function($) {
         };
     });
 
+    var onMazePlaceAdded = function (mazePieceId, xCoordinate, yCoordinate, encodedImage) {
+        alert('new maze piece! ' + mazePieceId + xCoordinate + yCoordinate + encodedImage);
+    }
+
     return {
         createGame: function(host) {
             server.createGame(host);
         },
-        joinGame: function() {
-            server.joinGame();
+        joinGame: function(playerName) {
+            server.joinGame(playerName);
         },
         startGame: function() {
             server.startGame();
         },
-        ready: function() {
-            server.playerReady();
+        ready: function(playerName) {
+            server.playerReady(playerName);
         }, 
         moved: function() {
             server.playerMoved();

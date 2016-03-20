@@ -1,4 +1,5 @@
 ﻿using System;
+using Hack24.Engine;
 
 namespace Hack24.Hubs
 {
@@ -10,23 +11,36 @@ namespace Hack24.Hubs
         /// Creates a new game.
         /// </summary>
         /// <param name="hostName">The name of the player acting as host.</param>
-        /// <returns>The unique reference of the game.</returns>
-        public string CreateGame(string hostName)
+        /// <returns>The game state.</returns>
+        public object CreateGame(string hostName)
         {
-            throw new NotImplementedException();
+            GameCoordinator.Instance.Game = new Game(hostName);
+            var state = GameCoordinator.Instance.Game.GetGameState();
+            return state;
         }
 
         /// <summary>
         /// Allows a player to join a game that already exists.
         /// </summary>
         /// <param name="playerName">The name of the joining player.</param>
-        /// <param name="gameReference">The game reference.</param>
-        /// <returns>True if the player has joined, otherwise false.</returns>
-        public bool JoinGame(string playerName, string gameReference)
+        /// <returns>The game state.</returns>
+        public object JoinGame(string playerName)
         {
-            throw new NotImplementedException();
+            GameCoordinator.Instance.Game.AddPlayer(playerName);
+            var state = GameCoordinator.Instance.Game.GetGameState();
+            return state;
         }
 
+        public void PlayerReady(string playerName)
+        {
+            GameCoordinator.Instance.Game.PlayerReady(playerName);
+        }
+
+        public void StartGame()
+        {
+            GameCoordinator.Instance.Game.GameStart();
+        }
+        
         /// <summary>
         /// Allows a player to leave a game in progress.
         /// Probably will be denied if the player is host.
@@ -37,24 +51,6 @@ namespace Hack24.Hubs
         public bool LeaveGame(string playerName, string gameReference)
         {
             throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// The player indicates that their game is in a state ready to begin.
-        /// </summary>
-        /// <param name="playerName">The name of the play who is ready.</param>
-        /// <param name="gameReference">The game reference.</param>
-        public void PlayerReady(string playerName, string gameReference)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Allows a host player to initiate the start of a game.
-        /// </summary>
-        /// <param name="gameReference">The game reference.</param>
-        public void StartGame(string gameReference)
-        {
         }
 
         /// <summary>
@@ -72,11 +68,12 @@ namespace Hack24.Hubs
         /// Places a new Maze Piece in the game maze.
         /// </summary>
         /// <param name="mazePieceId"></param>
-        /// <param name="gameReference"></param>
         /// <param name="xCoordinate"></param>
         /// <param name="yCoordinate"></param>
-        public void PlaceMazePiece(string gameReference, int mazePieceId, int xCoordinate, int yCoordinate)
+        /// <param name="encodedImage"></param>
+        public void PlaceMazePiece(int mazePieceId, int xCoordinate, int yCoordinate, string encodedImage)
         {
+            Clients.All.placeMazePiece(mazePieceId, xCoordinate, yCoordinate, encodedImage);
         }
 
         public void CollectMazePiece(string gameReference, string playerName, int mazePieceId)

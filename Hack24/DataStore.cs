@@ -58,7 +58,7 @@ namespace Hack24
         {
             using (var conn = Store.CreateOpenConnection())
             {
-                var puzzle = conn.Query<Puzzle>("SELECT TOP 1 * FROM Puzzle").Single();
+                var puzzle = conn.Query<Puzzle>("SELECT * FROM Puzzle").First();
                 puzzle.Pieces = conn.Query<Piece>("SELECT * FROM Piece WHERE PuzzleId = " + puzzle.Id).ToList();
                 return puzzle;
             }

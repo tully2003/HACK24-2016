@@ -21,5 +21,7 @@
         {
             get { return instance.Value; }
         }
+
+        public Game Game { get; set; }
     }
 }
