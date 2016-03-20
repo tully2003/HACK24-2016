@@ -161,11 +161,11 @@ function update() {
 function movePlayer(playerObj, direction) {
     switch (direction) {
         case 'up':
-            playerObj.body.velocity.y = -player_speed;
+            playerObj.body.velocity.y = -player_speed * 0.7;
             playerObj.play('up');
             break;
         case 'down':
-            playerObj.body.velocity.y = player_speed;
+            playerObj.body.velocity.y = player_speed*0.7;
             playerObj.play('down');
             break;
         case 'left':
