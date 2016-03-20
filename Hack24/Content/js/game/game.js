@@ -140,7 +140,7 @@ function movePlayer(playerObj, direction) {
             break;
     }
 
-    gs.moved(Math.floor((playerObj.position.x / 128)), Math.floor((playerObj.position.y / 128)));
+    //gs.moved(Math.floor((playerObj.position.x / 128)), Math.floor((playerObj.position.y / 128)));
 }
 
 function collectPiece(player, piece) {
