@@ -251,7 +251,7 @@ namespace Hack24
 
         private void NotifyOfPieceAdded(int pieceId, int x, int y, string encodedImage)
         {
-            _hub.PlaceMazePiece.Clients.All.placeMazePiece(pieceId, x, y, encodedImage);
+            _hub.Clients.All.placeMazePiece(pieceId, x, y, encodedImage);
         }
     }
 }
