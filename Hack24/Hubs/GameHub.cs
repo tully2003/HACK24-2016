@@ -73,7 +73,8 @@ namespace Hack24.Hubs
         /// <param name="encodedImage"></param>
         public void PlaceMazePiece(int mazePieceId, int xCoordinate, int yCoordinate, string encodedImage)
         {
-            Clients.All.placeMazePiece(mazePieceId, xCoordinate, yCoordinate, encodedImage);
+            //Clients.All.boo("test");
+            //Clients.All.placeMazePiece(mazePieceId, xCoordinate, yCoordinate, encodedImage);
         }
 
         public void CollectMazePiece(string gameReference, string playerName, int mazePieceId)

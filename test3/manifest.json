@@ -11,6 +11,7 @@
     "icons": {},
     "permissions": [
         "system.display",
+        "input",
     	"http://localhost:58191/"
     ]
 }
