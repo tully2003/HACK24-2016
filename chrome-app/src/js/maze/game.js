@@ -47,7 +47,7 @@ Packed24.Game.prototype = {
       layer.resizeWorld();
 
       //  Un-comment this on to see the collision tiles
-      layer.debug = true;
+      // layer.debug = true;
 
       //  Player
       this.createPlayer();

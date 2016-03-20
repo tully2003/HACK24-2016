@@ -10,25 +10,6 @@ namespace Hack24.Modules
         public HomeModule()
         {
             Get["/"] = _ => View["index_.html"];
-
-            Get["/dbtest"] = _ =>
-            {
-                return Store.Alive().ToString();
-            };
-
-            Post["/StartGame/{PlayerName}"] = x =>
-            {
-                var reference = DataStore.StartGame(x.PlayerName);
-
-                return JsonConvert.SerializeObject(new { reference });
-            };
-
-            Post["/JoinGame/{GameRef}/{PlayerName}"] = x =>
-            {
-                DataStore.JoinGame(x.GameRef.ToString().ToUpper(), x.PlayerName);
-
-                return "Joined game!";
-            };
         }
     }
 }
