@@ -150,6 +150,7 @@
   <ItemGroup>
     <Compile Include="DataAccess\Store.cs" />
     <Compile Include="DataStore.cs" />
+    <Compile Include="GameMaze.cs" />
     <Compile Include="Hubs\GameHub.cs" />
     <Compile Include="Modules\HomeModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
