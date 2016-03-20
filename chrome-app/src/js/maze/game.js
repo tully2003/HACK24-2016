@@ -42,7 +42,7 @@ Packed24.Game.prototype = {
       //  Create our layer
       layer = map.createLayer('Collision');
 
-      map.setCollision([52]);
+      map.setCollision([4]);
       //  Resize the world
       layer.resizeWorld();
 
