@@ -7,14 +7,24 @@ var map;
 var layer;
 var cursors;
 var player;
+var puzzle_pieces = [
+    'puzzle-piece-0',
+    'puzzle-piece-1',
+    'puzzle-piece-2',
+    'puzzle-piece-3',
+    'puzzle-piece-4',
+    'puzzle-piece-5',
+    'puzzle-piece-6',
+    'puzzle-piece-7',
+    'puzzle-piece-8'    
+];
 var pieces;
-var puzzle_pieces;
 
 var player_speed = 300;
 
 Packed24.Game.prototype = {
-    init: function() {
-
+    init: function () {
+        // this.createPieces();
     },
   create: function() {
       this.game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -29,7 +39,6 @@ Packed24.Game.prototype = {
       map = this.game.add.tilemap('map');
 
       //  Now add in the tileset
-      //map.addTilesetImage('walls', 'tiles');
       map.addTilesetImage('council', 'tiles');
 
       //  Create our layer
@@ -43,26 +52,19 @@ Packed24.Game.prototype = {
       layer.debug = true;
 
       //  Player
-      player = this.game.add.sprite(100, 100, 'player', 1);
-      player.animations.add('left', [8, 9], 10, true);
-      player.animations.add('right', [1, 2], 10, true);
-      player.animations.add('up', [11, 12, 13], 10, true);
-      player.animations.add('down', [4, 5, 6], 10, true);
+      this.createPlayer();
 
-      this.game.physics.enable(player, Phaser.Physics.ARCADE);
-      player.body.collideWorldBounds = true;
-
-      player.body.setSize(128, 128, 0, 0);
+      // pieces
+      this.createPieces();
 
       cursors = this.game.input.keyboard.createCursorKeys();
-
       window.cursors = cursors;
       //var help = game.add.text(16, 16, 'Arrows to move', { font: '14px Arial', fill: '#ffffff' });
       //help.fixedToCamera = true;
   },
   update: function() {
       this.game.physics.arcade.collide(player, layer);
-      //game.physics.arcade.overlap(player, coins, collectCoin, null, this);
+      this.game.physics.arcade.overlap(player,  pieces, collectPiece, null, this);
 
       player.body.velocity.set(0);
 
@@ -91,6 +93,31 @@ Packed24.Game.prototype = {
           //player.animations.stop();
       }
   },
+  createPieces: function () {
+      pieces = this.game.add.group();
+      //enable physics in them
+      pieces.enableBody = true;
+      pieces.physicsBodyType = Phaser.Physics.ARCADE;
+
+      gs.onPlaceMazePiece = function (id, position, x, y) {
+          // this.asteroids.create(this.game.world.randomX, this.game.world.randomY, 'rock');
+          var piece = pieces.create((x * 128) + 3, (y * 128) + 3, puzzle_pieces[position]);
+          piece.scale.setTo(0.34, 0.5);
+          piece.meta = {
+              id: id
+          }
+      };
+  },
+  createPlayer: function () {
+      player = this.game.add.sprite(100, 100, 'player', 1);
+      player.animations.add('left', [8, 9], 10, true);
+      player.animations.add('right', [1, 2], 10, true);
+      player.animations.add('up', [11, 12, 13], 10, true);
+      player.animations.add('down', [4, 5, 6], 10, true);
+      this.game.physics.enable(player, Phaser.Physics.ARCADE);
+      player.body.collideWorldBounds = true;
+      player.body.setSize(120, 120, 0, 0);
+  }
 };
 
 function movePlayer(playerObj, direction) {
@@ -112,18 +139,17 @@ function movePlayer(playerObj, direction) {
             playerObj.play('right');
             break;
     }
+
+    gs.moved(Math.floor((playerObj.position.x / 128)), Math.floor((playerObj.position.y / 128)));
 }
 
-function collectCoin(player, coin) {
-
-    coin.kill();
-    //add to player second screen
+function collectPiece(player, piece) {
+    piece.kill();
+    gs.collect(piece.meta.id);
 }
 
 function render() {
-
     this.game.debug.body(player);
-
 }
 
 

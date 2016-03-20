@@ -25,15 +25,14 @@ var gs = (function($) {
             gs.onGameStarted();
     };
 
-    client.placeMazePiece = function (mazePieceId, xCoordinate, yCoordinate, encodedImage) {
-        alert('MazePiece- image:' + encodedImage);
-        if (typeof gs.onMazePlaceAdded === 'function')
-            gs.onMazePlaceAdded(mazePieceId, xCoordinate, yCoordinate, encodedImage);
+    client.placeMazePiece = function (mazePieceId, position, x, y) {
+        if (typeof gs.onPlaceMazePiece === 'function')
+            gs.onPlaceMazePiece(mazePieceId, position, x, y);
     }
 
-    client.mazePieceCollected = function () {
+    client.mazePieceCollected = function (name, id) {
         if (typeof gs.onMazePieceCollected === 'function')
-            gs.onMazePieceCollected();
+            gs.onMazePieceCollected(name, id);
     };
 
     client.puzzlePiecePlaced = function () {
@@ -52,7 +51,6 @@ var gs = (function($) {
         console.log("signlar kicked off!")
     });
 
-
     return {
         createGame: function(host) {
             server.createGame(host);
@@ -66,14 +64,17 @@ var gs = (function($) {
         ready: function(playerName) {
             server.playerReady(playerName);
         }, 
-        moved: function() {
-            server.playerMoved();
-        }, 
-        collect: function() {
-            server.collectMazePiece();
-        }, 
+        moved: function(x, y) {
+            server.playerMove('host', x, y);
+        },
+        collect: function(id) {
+            server.pieceCollected('host', id);
+        },
         place: function() {
             server.placePiece();
+        },
+        getGameState: function () {
+            server.getGameState();
         }
     };
 }(jQuery))

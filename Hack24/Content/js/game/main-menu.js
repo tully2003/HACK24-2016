@@ -8,14 +8,15 @@ Packed24.MainMenu.prototype = {
     },
     create: function () {
         setTimeout(function () {
-            gs.createGame('playah 1');
+            gs.createGame('host');
             gs.joinGame('playah 2');
             gs.joinGame('playah 3');
-            gs.ready('playah 1');
+            gs.ready('host');
             gs.ready('playah 2');
             gs.ready('playah 3');
             gs.startGame();
-        }, 250);
+            gs.getGameState();
+        }, 500);
         
 
         this.state.start('Game');
