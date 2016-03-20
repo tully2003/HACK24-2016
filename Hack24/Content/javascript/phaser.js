@@ -6,7 +6,7 @@
 		var game = new Phaser.Game(800, 576, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
 
 function preload() {
-
+    game.stage.disableVisibilityChange = true;
     game.load.tilemap('map', '/Content/assets/map.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.image('tiles', '/content/assets/gridtiles.png');
     game.load.spritesheet('player', '/content/assets/spaceman.png', 16, 16);
