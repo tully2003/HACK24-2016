@@ -4,7 +4,7 @@ function copy-game
     rm -Recurse -Force $dest
     mkdir $dest
     Copy-Item .\Hack24\index.html -Destination $dest
-    xcopy .\Hack24\Content .\$dest\Content /E /Y
+    xcopy .\Hack24\Content .\$dest\Content\ /E /Y
     Write-Output "Copying game files..."
 }
 
