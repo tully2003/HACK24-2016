@@ -2,7 +2,10 @@ var Packed24 = Packed24 || {};
 
 Packed24.MainMenu = function(){};
 
-Packed24.MainMenu.prototype =  {
+Packed24.MainMenu.prototype = {
+    init: function () {
+
+    },
     create: function () {
         setTimeout(function () {
             gs.createGame('playah 1');

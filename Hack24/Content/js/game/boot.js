@@ -8,9 +8,9 @@ Packed24.Boot.prototype = {
     },
     preload: function() {
         this.game.load.tilemap('map', '/Content/assets/map.json', null, Phaser.Tilemap.TILED_JSON);
-        this.game.load.image('tiles', '/content/assets/gridtiles.png');
-        this.game.load.spritesheet('player', '/content/assets/spaceman.png', 16, 16);
-        this.game.load.spritesheet('coin', '/content/assets/coin.png', 32, 32);
+        this.game.load.image('tiles', '/content/assets/council_tiles.png');
+        this.game.load.spritesheet('player', '/content/assets/spaceman.png', 128, 128);
+        this.game.load.image('background', '/content/assets/background.png');
     },
     create: function() {
         //loading screen will have a white background
