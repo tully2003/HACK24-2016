@@ -166,7 +166,7 @@ namespace Hack24
                             x = random.Next(0, _boardWidth);
                             y = random.Next(0, _boardHeight);
                         }   // ensures there is not already a piece or a wall there
-                        while (_pieces.Any(p => p.Position.X == x && p.Position.Y == y) || _board[x][y] == 1);
+                        while (_pieces.Any(p => p.Position.X == x && p.Position.Y == y) || _board[y][x] == 1);
 
                         _pieces.Add(new Piece(piece.Id, x, y));
                     }
