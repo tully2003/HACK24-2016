@@ -3,7 +3,7 @@
 		var gameWidth = $(window).width();
       var gameHeight = gameWidth * 0.56;
       
-		var game = new Phaser.Game('100%', '100%', Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
+		var game = new Phaser.Game(800, 576, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
 
 function preload() {
 
@@ -26,7 +26,14 @@ function create() {
 
    game.stage.backgroundColor = '#787878';
    
-   game.stage.scale.startFullScreen();
+   sizeGameToWindow();
+
+   //game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
+   //game.input.onDown.add(gofull, this);
+
+   //game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+   //game.scale.setScreenSize();
+
     map = game.add.tilemap('map');
 
     //  Now add in the tileset
@@ -81,6 +88,17 @@ function create() {
 
     //var help = game.add.text(16, 16, 'Arrows to move', { font: '14px Arial', fill: '#ffffff' });
     //help.fixedToCamera = true;
+
+}
+
+function gofull() {
+
+    if (game.scale.isFullScreen) {
+        game.scale.stopFullScreen();
+    }
+    else {
+        game.scale.startFullScreen(false);
+    }
 
 }
 
@@ -153,6 +171,19 @@ function render() {
 }
 
 
+function sizeGameToWindow() {
+    game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+}
+
+$(window).bind('resize', function (e) {
+    window.resizeEvt;
+    $(window).resize(function () {
+        clearTimeout(window.resizeEvt);
+        window.resizeEvt = setTimeout(function () {
+            sizeGameToWindow();
+        }, 250);
+    });
+});
 
 	});
 })(jQuery);
