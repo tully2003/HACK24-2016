@@ -5,15 +5,15 @@ chrome.app.runtime.onLaunched.addListener(function() {
 	var display = displays[1];
     
 	chrome.app.window.create("src/pages/Start.html", {
-	    'state': 'fullscreen'
+	    // 'state': 'fullscreen'
 	});
 
-	chrome.app.window.create('_build/index.html', {
+	chrome.app.window.create('_build/_index.html', {
 	    'outerBounds': {
 		'left': display.bounds.left,
 		'top': 0 
 	    },
-            'state': 'fullscreen'
+            // 'state': 'fullscreen'
 	});
 	
    }); 
