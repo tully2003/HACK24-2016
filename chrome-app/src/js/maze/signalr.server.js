@@ -117,8 +117,8 @@
         return proxies;
     };
 
-    // signalR.hub = $.hubConnection("http://localhost:58191/signalr", { useDefaultPath: false });
-    signalR.hub = $.hubConnection("http://hack24-bizfitech.azurewebsites.net/signalr", { useDefaultPath: false });
+    signalR.hub = $.hubConnection("http://localhost:58191/signalr", { useDefaultPath: false });
+    // signalR.hub = $.hubConnection("http://hack24-bizfitech.azurewebsites.net/signalr", { useDefaultPath: false });
     $.extend(signalR, signalR.hub.createHubProxies());
 
 }(window.jQuery, window));

@@ -12,6 +12,7 @@
     "permissions": [
         "system.display",
     	"http://localhost:58191/",
+        "http://hack24-bizfitech.azurewebsites.net/",
         "fullscreen"
     ]
 }
