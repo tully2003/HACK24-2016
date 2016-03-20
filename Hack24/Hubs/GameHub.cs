@@ -1,34 +1,82 @@
-﻿namespace Hack24.Hubs
+﻿using System;
+using Hack24.Engine;
+
+namespace Hack24.Hubs
 {
     using Microsoft.AspNet.SignalR;
 
     public class GameHub : Hub
     {
-        public void CreateGame()
+        /// <summary>
+        /// Creates a new game.
+        /// </summary>
+        /// <param name="hostName">The name of the player acting as host.</param>
+        /// <returns>The game state.</returns>
+        public object CreateGame(string hostName)
         {
+            GameCoordinator.Instance.Game = new Game(hostName);
+            var state = GameCoordinator.Instance.Game.GetGameState();
+            return state;
         }
 
-        public void JoinGame()
+        /// <summary>
+        /// Allows a player to join a game that already exists.
+        /// </summary>
+        /// <param name="playerName">The name of the joining player.</param>
+        /// <returns>The game state.</returns>
+        public object JoinGame(string playerName)
         {
+            GameCoordinator.Instance.Game.AddPlayer(playerName);
+            var state = GameCoordinator.Instance.Game.GetGameState();
+            return state;
         }
 
-        public void LeaveGame()
+        public void PlayerReady(string playerName)
         {
-        }
-
-        public void PlayerReady()
-        {
+            GameCoordinator.Instance.Game.PlayerReady(playerName);
         }
 
         public void StartGame()
         {
+            GameCoordinator.Instance.Game.GameStart();
+        }
+        
+        /// <summary>
+        /// Allows a player to leave a game in progress.
+        /// Probably will be denied if the player is host.
+        /// </summary>
+        /// <param name="playerName">The name of the leaving player.</param>
+        /// <param name="gameReference">The game reference.</param>
+        /// <returns>True is player has left, otherwise false.</returns>
+        public bool LeaveGame(string playerName, string gameReference)
+        {
+            throw new NotImplementedException();
         }
 
-        public void PlayerMove()
+        /// <summary>
+        /// Allows a player to notifiy the server that they have moved.
+        /// </summary>
+        /// <param name="gameReference">The game reference.</param>
+        /// <param name="playerName">The name of the player who has moved.</param>
+        /// <param name="x">The new x coordinate of the player.</param>
+        /// <param name="y">The new y coordinate of the player.</param>
+        public void PlayerMove(string gameReference, string playerName, int x, int y)
         {
         }
 
-        public void CollectPiece()
+        /// <summary>
+        /// Places a new Maze Piece in the game maze.
+        /// </summary>
+        /// <param name="mazePieceId"></param>
+        /// <param name="xCoordinate"></param>
+        /// <param name="yCoordinate"></param>
+        /// <param name="encodedImage"></param>
+        public void PlaceMazePiece(int mazePieceId, int xCoordinate, int yCoordinate, string encodedImage)
+        {
+            Clients.All.placeMazePiece(mazePieceId, xCoordinate, yCoordinate, encodedImage);
+        }
+
+        public void CollectMazePiece(string gameReference, string playerName, int mazePieceId)
         {
         }
 

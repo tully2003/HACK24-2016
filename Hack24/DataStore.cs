@@ -1,8 +1,10 @@
 ﻿using Dapper;
 using Hack24.DataAccess;
 using System;
+using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
+using Nancy;
 
 namespace Hack24
 {
@@ -50,6 +52,32 @@ namespace Hack24
 
                 conn.Execute(SqlAddPlayerToGame, new { GameId = gameId, PlayerId = playerId });
             }
+        }
+
+        public static Puzzle GetPuzzle()
+        {
+            using (var conn = Store.CreateOpenConnection())
+            {
+                var puzzle = conn.Query<Puzzle>("SELECT * FROM Puzzle").First();
+                puzzle.Pieces = conn.Query<Piece>("SELECT * FROM Piece WHERE PuzzleId = " + puzzle.Id).ToList();
+                return puzzle;
+            }
+        }
+
+        public class Puzzle
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public List<Piece> Pieces { get; set; }
+            public string EncodedImage { get; set; }
+        }
+
+        public class Piece
+        {
+            public int Id { get; set; }
+            public int PuzzleId { get; set; }
+            public int Position { get; set; }
+            public string EncodedImage { get; set; }
         }
     }
 }

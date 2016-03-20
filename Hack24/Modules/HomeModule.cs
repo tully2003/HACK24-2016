@@ -9,7 +9,7 @@ namespace Hack24.Modules
     {
         public HomeModule()
         {
-            Get["/"] = _ => View["xxx.html"];
+            Get["/"] = _ => View["index_.html"];
 
             Get["/dbtest"] = _ =>
             {
