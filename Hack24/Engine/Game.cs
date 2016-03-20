@@ -144,7 +144,7 @@ namespace Hack24
                     int y;
 
                     var position = random.Next(0, 8);
-
+                    
                     lock (_lock)
                     {
                         do
@@ -154,10 +154,12 @@ namespace Hack24
                         }   // ensures there is not already a piece or a wall there
                         while (_pieces.Any(p => p.Location.X == x && p.Location.Y == y) || _board[y][x] == 1);
 
-                        _pieces.Add(new Piece(position, x, y));
+                        var p = new Piece(position, x, y);
+                        _pieces.Add(p);
+                        NotifyOfPieceAdded(p.Id, position, x, y);
                     }
 
-                    NotifyOfPieceAdded(position, x, y);
+                    
                 }
 
                 var maxTimeToWait = 5000;
@@ -243,16 +245,17 @@ namespace Hack24
 
         private void NotifyOfPlayerMove(string playerName, int newX, int newY)
         {
-            throw new NotImplementedException();
+            _hub.Clients.All.playerMoved(playerName, newX, newY);
         }
 
         private void NotifyOfNewPlayer(string playerName)
         {
+            _hub.Clients.All.newPlayer(playerName);
         }
 
-        private void NotifyOfPieceAdded(int position, int x, int y)
+        private void NotifyOfPieceAdded(int id, int position, int x, int y)
         {
-            _hub.Clients.All.placeMazePiece(position, x, y);
+            _hub.Clients.All.placeMazePiece(id, position, x, y);
         }
     }
 }
