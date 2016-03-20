@@ -143,7 +143,7 @@ namespace Hack24
                     int x;
                     int y;
 
-                    var position = random.Next(0, 8);
+                    var position = random.Next(0, 9);
                     
                     lock (_lock)
                     {
@@ -158,8 +158,6 @@ namespace Hack24
                         _pieces.Add(piece);
                         NotifyOfPieceAdded(piece.Id, position, x, y);
                     }
-
-                    
                 }
 
                 var maxTimeToWait = 3000;
