@@ -1,28 +1,9 @@
-document.addEventListener("keydown", function(evt) {
-    chrome.runtime.sendMessage({
-        name: "keydown",
-        keyCode: evt.keyCode
-    });
-}, false);
-
-document.addEventListener("keyup", function(evt) {
-    console.log("keyup");
-    chrome.runtime.sendMessage({
-        name: "keyup",
-        keyCode: evt.keyCode
-    });
-}, false);
-
-
-
 $(document).ready(function () {
 
     var apiUrl = 'http://localhost:58191/';
 
     $('#btn-start-new').click(function (e) {
         e.preventDefault();
-        
-
         var name = $('#player-name').val();
         var url = apiUrl + 'StartGame/' + encodeURIComponent(name) + '/';
 

@@ -11,7 +11,7 @@
     "icons": {},
     "permissions": [
         "system.display",
-    	"http://localhost:58191/",
-        "fullscreen"
+        "input",
+    	"http://localhost:58191/"
     ]
 }

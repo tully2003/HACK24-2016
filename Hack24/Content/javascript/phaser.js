@@ -1,4 +1,6 @@
 (function ($) {
+
+
 	$(document).ready(function(){
 		var gameWidth = $(window).width();
       var gameHeight = gameWidth * 0.56;
@@ -6,7 +8,7 @@
 		var game = new Phaser.Game(2560, 1280, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
 
 function preload() {
-
+    game.stage.disableVisibilityChange = true;
     game.load.tilemap('map', '/Content/assets/map.json', null, Phaser.Tilemap.TILED_JSON);
     //game.load.image('tiles', '/content/assets/tiles_hack24.png');
     game.load.image('tiles', '/content/assets/council_tiles.png');
@@ -96,6 +98,7 @@ function create() {
 
     cursors = game.input.keyboard.createCursorKeys();
 
+    window.cursors = cursors;
     //var help = game.add.text(16, 16, 'Arrows to move', { font: '14px Arial', fill: '#ffffff' });
     //help.fixedToCamera = true;
 
@@ -189,6 +192,52 @@ function render() {
 function sizeGameToWindow() {
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 }
+
+            chrome.runtime.onMessage.addListener(function(msg, sender) {
+                
+                if (msg.name === "keyup") {
+                    cursors.up.isDown = false;
+                    cursors.down.isDown = false;
+                    cursors.right.isDown = false;
+                    cursors.left.isDown = false;
+                    return;
+                }
+
+                switch (msg.keyCode) {
+                    case 37:
+                        cursors.up.isDown = false;
+                        cursors.down.isDown = false;
+                        cursors.right.isDown = false;
+                        cursors.left.isDown = true;
+                        break;
+                    case 38:
+                        cursors.up.isDown = true;
+                        cursors.down.isDown = false;
+                        cursors.right.isDown = false;
+                        cursors.left.isDown = false;
+                        break;
+                    case 39:
+                        cursors.up.isDown = false;
+                        cursors.down.isDown = false;
+                        cursors.right.isDown = true;
+                        cursors.left.isDown = false;
+                        break;
+                    case 40:
+                        cursors.up.isDown = false;
+                        cursors.down.isDown = true;
+                        cursors.right.isDown = false;
+                        cursors.left.isDown = false;
+                        break;
+                }
+                
+
+                if (msg.keyCode === 39) {
+                }
+
+                
+
+                $.event.trigger({ type: 'keypress', which: 39 });
+            });
 
 $(window).bind('resize', function (e) {
     window.resizeEvt;

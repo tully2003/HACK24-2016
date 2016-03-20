@@ -134,9 +134,17 @@
     <Content Include="Content\assets\spaceman.png" />
     <Content Include="Content\javascript\phaser.js" />
     <Content Include="Content\javascript\vendor.js" />
-    <Content Include="Content\js\game.js" />
+    <Content Include="Content\js\game\boot.js" />
+    <Content Include="Content\js\game\game-server.js" />
+    <Content Include="Content\js\game\game.js" />
+    <Content Include="Content\js\game\main-menu.js" />
+    <Content Include="Content\js\game\main.js" />
+    <Content Include="Content\js\game\preload.js" />
+    <Content Include="Content\js\jquery-2.2.2.min.js" />
+    <Content Include="Content\js\phaser.min.js" />
     <Content Include="index.html" />
     <Content Include="Join.html" />
+    <Content Include="Views\index_.html" />
     <Content Include="Views\xxx.html" />
     <None Include="Content\js\jquery-1.6.4-vsdoc.js" />
     <Content Include="Content\js\jquery-1.6.4.js" />
@@ -162,6 +170,8 @@
   <ItemGroup>
     <Compile Include="DataAccess\Store.cs" />
     <Compile Include="DataStore.cs" />
+    <Compile Include="Engine\GameCoordinator.cs" />
+    <Compile Include="Engine\Game.cs" />
     <Compile Include="Hubs\GameHub.cs" />
     <Compile Include="Modules\HomeModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

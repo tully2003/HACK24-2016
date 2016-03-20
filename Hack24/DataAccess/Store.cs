@@ -102,7 +102,17 @@
             using (var conn = CreateOpenConnection())
             {
                 // TODO: actual useful seed stuff
-                conn.Execute("INSERT INTO Puzzle (Name, EncodedImage) VALUES ('test seed data', '0123456789abcdefghijklmnopqrstuvwxyz')");
+                conn.Execute("INSERT INTO Puzzle (Name, EncodedImage) VALUES ('testPuzzle', '0123456789abcdefghijklmnopqrstuvwxyz')");
+                var puzzleId = conn.Query<int>("SELECT Id FROM Puzzle").First();
+                conn.Execute($"INSERT INTO Piece (PuzzleId, Position, EncodedImage) VALUES ({puzzleId}, 1, '10123456789abcdefghijklmnopqrstuvwxyz')");
+                conn.Execute($"INSERT INTO Piece (PuzzleId, Position, EncodedImage) VALUES ({puzzleId}, 2, '20123456789abcdefghijklmnopqrstuvwxyz')");
+                conn.Execute($"INSERT INTO Piece (PuzzleId, Position, EncodedImage) VALUES ({puzzleId}, 3, '30123456789abcdefghijklmnopqrstuvwxyz')");
+                conn.Execute($"INSERT INTO Piece (PuzzleId, Position, EncodedImage) VALUES ({puzzleId}, 4, '40123456789abcdefghijklmnopqrstuvwxyz')");
+                conn.Execute($"INSERT INTO Piece (PuzzleId, Position, EncodedImage) VALUES ({puzzleId}, 5, '50123456789abcdefghijklmnopqrstuvwxyz')");
+                conn.Execute($"INSERT INTO Piece (PuzzleId, Position, EncodedImage) VALUES ({puzzleId}, 6, '60123456789abcdefghijklmnopqrstuvwxyz')");
+                conn.Execute($"INSERT INTO Piece (PuzzleId, Position, EncodedImage) VALUES ({puzzleId}, 7, '70123456789abcdefghijklmnopqrstuvwxyz')");
+                conn.Execute($"INSERT INTO Piece (PuzzleId, Position, EncodedImage) VALUES ({puzzleId}, 8, '80123456789abcdefghijklmnopqrstuvwxyz')");
+                conn.Execute($"INSERT INTO Piece (PuzzleId, Position, EncodedImage) VALUES ({puzzleId}, 9, '90123456789abcdefghijklmnopqrstuvwxyz')");
             }
         }
     }
