@@ -1,4 +1,6 @@
 (function ($) {
+
+
 	$(document).ready(function(){
 		var gameWidth = $(window).width();
       var gameHeight = gameWidth * 0.56;
@@ -86,6 +88,7 @@ function create() {
 
     cursors = game.input.keyboard.createCursorKeys();
 
+    window.cursors = cursors;
     //var help = game.add.text(16, 16, 'Arrows to move', { font: '14px Arial', fill: '#ffffff' });
     //help.fixedToCamera = true;
 
@@ -174,6 +177,52 @@ function render() {
 function sizeGameToWindow() {
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 }
+
+            chrome.runtime.onMessage.addListener(function(msg, sender) {
+                
+                if (msg.name === "keyup") {
+                    cursors.up.isDown = false;
+                    cursors.down.isDown = false;
+                    cursors.right.isDown = false;
+                    cursors.left.isDown = false;
+                    return;
+                }
+
+                switch (msg.keyCode) {
+                    case 37:
+                        cursors.up.isDown = false;
+                        cursors.down.isDown = false;
+                        cursors.right.isDown = false;
+                        cursors.left.isDown = true;
+                        break;
+                    case 38:
+                        cursors.up.isDown = true;
+                        cursors.down.isDown = false;
+                        cursors.right.isDown = false;
+                        cursors.left.isDown = false;
+                        break;
+                    case 39:
+                        cursors.up.isDown = false;
+                        cursors.down.isDown = false;
+                        cursors.right.isDown = true;
+                        cursors.left.isDown = false;
+                        break;
+                    case 40:
+                        cursors.up.isDown = false;
+                        cursors.down.isDown = true;
+                        cursors.right.isDown = false;
+                        cursors.left.isDown = false;
+                        break;
+                }
+                
+
+                if (msg.keyCode === 39) {
+                }
+
+                
+
+                $.event.trigger({ type: 'keypress', which: 39 });
+            });
 
 $(window).bind('resize', function (e) {
     window.resizeEvt;
