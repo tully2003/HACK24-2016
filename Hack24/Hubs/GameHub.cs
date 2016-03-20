@@ -57,5 +57,10 @@ namespace Hack24.Hubs
             var state = GameCoordinator.Instance.Game.GetGameState();
             return JsonConvert.SerializeObject(state);
         }
+
+        public void PieceCollected(string playerName, int id)
+        {
+            GameCoordinator.Instance.Game.PieceCollected(playerName, id);
+        }
     }
 }

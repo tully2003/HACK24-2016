@@ -238,6 +238,21 @@ namespace Hack24
             return false;
         }
 
+        public void PieceCollected(string playerName, int id)
+        {
+            var player = _players.First(p => p.Name == playerName);
+
+            Piece piece;
+
+            lock (_lock)
+            {
+                piece = _pieces.First(p=> p.Id == id);
+                _pieces.Remove(piece);
+            }
+
+            player.CollectedPiecePosition = piece.Position;
+        }
+
         private void NotifyOfPieceCollected(string playerName, int id)
         {
             _hub.Clients.All.mazePieceCollected(playerName, id);
