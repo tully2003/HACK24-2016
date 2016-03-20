@@ -17,6 +17,7 @@ namespace Hack24
 
     public class Game
     {
+        private int[] _map = { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 99, 99, 0, 0, 0, 0, 0, 0, 0, 0, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 99, 99, 0, 0, 99, 99, 99, 99, 0, 0, 99, 0, 0, 0, 0, 0, 0, 0, 0, 99, 99, 99, 99, 0, 0, 99, 99, 0, 0, 0, 0, 99, 99, 0, 0, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 99, 0, 0, 99, 99, 0, 0, 0, 0, 0, 99, 0, 0, 0, 0, 0, 99, 99, 99, 99, 0, 0, 0, 0, 0, 99, 0, 0, 99, 99, 0, 0, 99, 0, 0, 99, 0, 0, 0, 0, 0, 0, 0, 99, 0, 0, 0, 0, 0, 99, 99, 0, 0, 99, 99, 0, 0, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 99, 0, 0, 0, 0, 0, 99, 0, 0, 0, 99, 99, 0, 0, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 99, 0, 0, 0, 0, 0, 99, 0, 0, 0, 99, 99, 0, 0, 99, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 99, 99, 0, 0, 99, 99, 99, 99, 99, 99, 0, 0, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 99, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 99, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 99, 0, 0, 99, 99, 0, 0, 99, 99, 99, 99, 0, 0, 99, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 99, 99, 99, 99, 99, 0, 0, 0, 0, 0, 0, 99, 0, 0, 99, 99, 0, 0, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 99, 99, 99, 0, 0, 99, 99, 0, 0, 99, 99, 99, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 99, 0, 0, 0, 0, 99, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99};
         private byte[][] _board;
         private int _boardWidth;
         private int _boardHeight;
@@ -75,14 +76,24 @@ namespace Hack24
         {
             _hub = GlobalHost.ConnectionManager.GetHubContext<GameHub>();
 
-            _board = new[]
+            var mapRows = Split(_map, 25);
+
+            var byteArrayList = new List<Byte[]>();
+
+            foreach (var mapRow in mapRows)
             {
-              new byte[] { 0, 0, 1, 0, 0},
-              new byte[] { 0, 0, 1, 0, 0},
-              new byte[] { 0, 0, 0, 0, 0},
-              new byte[] { 0, 1, 1, 1, 1},
-              new byte[] { 0, 0, 1, 0, 0}
-          };
+                var byteList = new List<byte>();
+
+                foreach (var i in mapRow)
+                {
+                    var b = (byte) (i == 0 ? 0 : 1);
+                    byteList.Add(b);
+                }
+
+                byteArrayList.Add(byteList.ToArray());
+            }
+
+            _board = byteArrayList.ToArray();
 
             _boardWidth = _board[0].Length;
             _boardHeight = _board.Length;
@@ -99,8 +110,14 @@ namespace Hack24
             _puzzle = DataStore.GetPuzzle();
         }
 
-        public IHubConnectionContext<object> Clients { get; set; }
-
+        public static IEnumerable<IEnumerable<T>> Split<T>(T[] array, int size)
+        {
+            for (var i = 0; i < (float)array.Length / size; i++)
+            {
+                yield return array.Skip(i * size).Take(size);
+            }
+        }
+        
         public void GameStart()
         {
             _gameStartWhenReady = true;
@@ -251,7 +268,7 @@ namespace Hack24
 
         private void NotifyOfPieceAdded(int pieceId, int x, int y, string encodedImage)
         {
-            _hub.PlaceMazePiece.Clients.All.placeMazePiece(pieceId, x, y, encodedImage);
+            _hub.Clients.All.placeMazePiece(pieceId, x, y, encodedImage);
         }
     }
 }
