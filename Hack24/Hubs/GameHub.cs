@@ -42,52 +42,9 @@ namespace Hack24.Hubs
             GameCoordinator.Instance.Game.GameStart();
         }
         
-        /// <summary>
-        /// Allows a player to leave a game in progress.
-        /// Probably will be denied if the player is host.
-        /// </summary>
-        /// <param name="playerName">The name of the leaving player.</param>
-        /// <param name="gameReference">The game reference.</param>
-        /// <returns>True is player has left, otherwise false.</returns>
-        public bool LeaveGame(string playerName, string gameReference)
+        public void PlayerMove(string playerName, int x, int y)
         {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Allows a player to notifiy the server that they have moved.
-        /// </summary>
-        /// <param name="gameReference">The game reference.</param>
-        /// <param name="playerName">The name of the player who has moved.</param>
-        /// <param name="x">The new x coordinate of the player.</param>
-        /// <param name="y">The new y coordinate of the player.</param>
-        public void PlayerMove(string gameReference, string playerName, int x, int y)
-        {
-        }
-
-        /// <summary>
-        /// Places a new Maze Piece in the game maze.
-        /// </summary>
-        /// <param name="mazePieceId"></param>
-        /// <param name="xCoordinate"></param>
-        /// <param name="yCoordinate"></param>
-        /// <param name="encodedImage"></param>
-        public void PlaceMazePiece(int mazePieceId, int xCoordinate, int yCoordinate, string encodedImage)
-        {
-            //Clients.All.boo("test");
-            //Clients.All.placeMazePiece(mazePieceId, xCoordinate, yCoordinate, encodedImage);
-        }
-
-        public void CollectMazePiece(string gameReference, string playerName, int mazePieceId)
-        {
-        }
-
-        public void PlacePiece()
-        {
-        }
-
-        public void GameWon()
-        {
+            GameCoordinator.Instance.Game.MovePlayer(playerName, x, y);
         }
 
         public void Send(string player)

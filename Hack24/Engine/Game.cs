@@ -18,6 +18,7 @@ namespace Hack24
     public class Game
     {
         private int[] _map = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 52, 52, 52, 0, 0, 52, 0, 52, 52, 52, 0, 52, 0, 0, 52, 0, 0, 0, 0, 0, 0, 0, 52, 0, 0, 52, 0, 0, 0, 0, 0, 52, 0, 0, 52, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 52, 52, 0, 0, 52, 52, 0, 0, 52, 0, 0, 52, 0, 0, 52, 52, 0, 0, 52, 0, 0, 0, 0, 0, 0, 0, 0, 0, 52, 0, 0, 52, 0, 0, 0, 0, 0, 0, 52, 0, 0, 0, 0, 0, 52, 52, 0, 0, 0, 0, 0, 0, 0, 0, 52, 52, 0, 0, 0, 0, 52, 52, 0, 0, 0, 0, 0, 0, 52, 0, 0, 52, 0, 0, 0, 0, 0, 0, 52, 0, 0, 0, 0, 0, 52, 52, 0, 0, 52, 0, 0, 52, 0, 0, 52, 52, 0, 0, 52, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        private int _mapSplitOn = 20;
         private byte[][] _board;
         private int _boardWidth;
         private int _boardHeight;
@@ -26,7 +27,6 @@ namespace Hack24
         private object _lock;
         private Thread _pieceAdderThread;
         private bool _gameStartWhenReady;
-        private DataStore.Puzzle _puzzle;
         private string _gameRef;
         private GameState _state;
         private IHubContext _hub;
@@ -36,7 +36,7 @@ namespace Hack24
             public Player(string name, int startX, int startY)
             {
                 Name = name;
-                Position = new Position
+                Location = new Location
                 {
                     X = startX,
                     Y = startY
@@ -44,21 +44,24 @@ namespace Hack24
             }
 
             public string Name { get; }
-            public Position Position { get; set; }
-            public int? CollectedPieceId { get; set; }
+            public Location Location { get; set; }
+            public int? CollectedPiecePosition { get; set; }
             public bool Ready { get; set; }
         }
+
+        private static int _counter = 1;
 
         private class Piece
         {
             public int Id { get; set; }
-            public int PieceId { get; set; }
-            public Position Position { get; set; }
+            public int Position { get; set; }
+            public Location Location { get; set; }
 
-            public Piece(int id, int x, int y)
+            public Piece(int position, int x, int y)
             {
-                Id = id;
-                Position = new Position
+                Id = _counter++;
+                Position = position;
+                Location = new Location
                 {
                     X = x,
                     Y = y
@@ -66,7 +69,7 @@ namespace Hack24
             }
         }
 
-        private class Position
+        private class Location
         {
             public int X { get; set; }
             public int Y { get; set; }
@@ -76,24 +79,9 @@ namespace Hack24
         {
             _hub = GlobalHost.ConnectionManager.GetHubContext<GameHub>();
 
-            var mapRows = Split(_map, 20);
+            var mapRows = Split(_map, _mapSplitOn);
 
-            var byteArrayList = new List<Byte[]>();
-
-            foreach (var mapRow in mapRows)
-            {
-                var byteList = new List<byte>();
-
-                foreach (var i in mapRow)
-                {
-                    var b = (byte) (i == 0 ? 0 : 1);
-                    byteList.Add(b);
-                }
-
-                byteArrayList.Add(byteList.ToArray());
-            }
-
-            _board = byteArrayList.ToArray();
+            _board = mapRows.Select(mapRow => mapRow.Select(i => (byte) (i == 0 ? 0 : 1)).ToArray()).ToArray();
 
             _boardWidth = _board[0].Length;
             _boardHeight = _board.Length;
@@ -106,8 +94,6 @@ namespace Hack24
 
             _gameRef = DataStore.StartGame(hostPlayerName);
             AddPlayer(hostPlayerName);
-            _puzzle = DataStore.GetPuzzle();
-            _puzzle = DataStore.GetPuzzle();
         }
 
         public static IEnumerable<IEnumerable<T>> Split<T>(T[] array, int size)
@@ -117,7 +103,7 @@ namespace Hack24
                 yield return array.Skip(i * size).Take(size);
             }
         }
-        
+
         public void GameStart()
         {
             _gameStartWhenReady = true;
@@ -157,7 +143,7 @@ namespace Hack24
                     int x;
                     int y;
 
-                    var piece = _puzzle.Pieces[random.Next(0, _puzzle.Pieces.Count - 1)];
+                    var position = random.Next(0, 8);
 
                     lock (_lock)
                     {
@@ -166,12 +152,12 @@ namespace Hack24
                             x = random.Next(0, _boardWidth);
                             y = random.Next(0, _boardHeight);
                         }   // ensures there is not already a piece or a wall there
-                        while (_pieces.Any(p => p.Position.X == x && p.Position.Y == y) || _board[y][x] == 1);
+                        while (_pieces.Any(p => p.Location.X == x && p.Location.Y == y) || _board[y][x] == 1);
 
-                        _pieces.Add(new Piece(piece.Id, x, y));
+                        _pieces.Add(new Piece(position, x, y));
                     }
 
-                    NotifyOfPieceAdded(piece.Id, x, y, piece.EncodedImage);
+                    NotifyOfPieceAdded(position, x, y);
                 }
 
                 var maxTimeToWait = 5000;
@@ -189,19 +175,17 @@ namespace Hack24
                     Players = _players.Select(p => new
                     {
                         Name = p.Name,
-                        Payload = p.CollectedPieceId,
-                        X = p.Position.X,
-                        Y = p.Position.Y
+                        Payload = p.CollectedPiecePosition,
+                        X = p.Location.X,
+                        Y = p.Location.Y
                     }).ToList(),
                     Pieces = _pieces.Select(pi => new
                     {
                         Id = pi.Id,
-                        X = pi.Position.X,
-                        Y = pi.Position.Y,
-                        EncodedImage = _puzzle.Pieces.First(pu => pu.Id == pi.PieceId).EncodedImage
-                    }).ToList(),
-                    Puzzle = _puzzle.Name,
-                    EncodedImage = _puzzle.EncodedImage
+                        Position = pi.Position,
+                        X = pi.Location.X,
+                        Y = pi.Location.Y
+                    }).ToList()
                 };
             }
         }
@@ -228,18 +212,18 @@ namespace Hack24
 
             if (_board[newX][newY] == 0)
             {
-                p.Position.X = newX;
-                p.Position.Y = newY;
+                p.Location.X = newX;
+                p.Location.Y = newY;
 
                 NotifyOfPlayerMove(playerName, newX, newY);
 
                 lock (_lock)
                 {
-                    var piece = _pieces.FirstOrDefault(pi => pi.Position.X == newX && pi.Position.Y == newY);
+                    var piece = _pieces.FirstOrDefault(pi => pi.Location.X == newX && pi.Location.Y == newY);
 
                     if (piece != null)
                     {
-                        p.CollectedPieceId = piece.PieceId;
+                        p.CollectedPiecePosition = piece.Position;
                         NotifyOfPieceCollected(playerName, piece.Id);
 
                         _pieces.Remove(piece);
@@ -254,7 +238,7 @@ namespace Hack24
 
         private void NotifyOfPieceCollected(string playerName, int id)
         {
-            throw new NotImplementedException();
+            _hub.Clients.All.mazePieceCollected(playerName, id);
         }
 
         private void NotifyOfPlayerMove(string playerName, int newX, int newY)
@@ -266,9 +250,9 @@ namespace Hack24
         {
         }
 
-        private void NotifyOfPieceAdded(int pieceId, int x, int y, string encodedImage)
+        private void NotifyOfPieceAdded(int position, int x, int y)
         {
-            _hub.Clients.All.placeMazePiece(pieceId, x, y, encodedImage);
+            _hub.Clients.All.placeMazePiece(position, x, y);
         }
     }
 }
