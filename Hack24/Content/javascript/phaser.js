@@ -18,6 +18,9 @@ function preload() {
     game.load.image('background', '/content/assets/background.png');
 
 }
+
+        var DEBUG = false;
+
 var coins;
 var map;
 var layer;
@@ -56,12 +59,12 @@ function create() {
     //layerObj = map.createLayer('Object Layer 1');
     
 
-    map.setCollision([52]);
+    map.setCollision([4]);
     //  Resize the world
     layer.resizeWorld();
 
     //  Un-comment this on to see the collision tiles
-    layer.debug = true;
+    layer.debug = DEBUG;
 
     //coins = game.add.group();
 
@@ -92,7 +95,7 @@ function create() {
 
     player.body.setSize(128, 128, 0, 0);
 
-    //player.scale.setTo(2, 2);
+    player.scale.setTo(0.8, 0.8);
 
     //game.camera.follow(player);
 
@@ -184,7 +187,7 @@ function collectCoin(player, coin) {
 
 function render() {
 
-    game.debug.body(player);
+    //game.debug.body(player);
 
 }
 
