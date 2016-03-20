@@ -8,7 +8,7 @@ chrome.app.runtime.onLaunched.addListener(function() {
 	    'state': 'fullscreen'
 	});
 
-	chrome.app.window.create('window-2.html', {
+	chrome.app.window.create('index.html', {
 	    'outerBounds': {
 		'left': display.bounds.left,
 		'top': 0 

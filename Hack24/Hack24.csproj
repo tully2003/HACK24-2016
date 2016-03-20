@@ -128,6 +128,14 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assets\catastrophi_tiles_16.png" />
+    <Content Include="Content\assets\coin.png" />
+    <Content Include="Content\assets\gridtiles.png" />
+    <Content Include="Content\assets\spaceman.png" />
+    <Content Include="Content\javascript\phaser.js" />
+    <Content Include="Content\javascript\vendor.js" />
+    <Content Include="Content\js\game.js" />
+    <Content Include="index.html" />
     <Content Include="Join.html" />
     <Content Include="Views\xxx.html" />
     <None Include="Content\js\jquery-1.6.4-vsdoc.js" />
@@ -137,6 +145,10 @@
     <Content Include="Content\js\jquery.signalR-2.2.0.min.js" />
     <Content Include="Start.html" />
     <Content Include="packages.config" />
+    <Content Include="Content\assets\catastrophi_level2.csv" />
+    <Content Include="Content\assets\map - Copy.json" />
+    <Content Include="Content\assets\map.json" />
+    <Content Include="Content\assets\tilemap_maze.csv" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -150,6 +162,7 @@
   <ItemGroup>
     <Compile Include="DataAccess\Store.cs" />
     <Compile Include="DataStore.cs" />
+    <Compile Include="Engine\GameCoordinator.cs" />
     <Compile Include="GameMaze.cs" />
     <Compile Include="Hubs\GameHub.cs" />
     <Compile Include="Modules\HomeModule.cs" />
@@ -179,7 +192,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>58191</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

@@ -11,6 +11,7 @@ namespace Hack24
         Running,
         Complete
     }
+
     public class GameMaze
     {
         private byte[][] _board;

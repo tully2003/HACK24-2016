@@ -43,6 +43,7 @@ var config = {
         fonts:          dir.app + '/styles/fonts/**/*',
         angularApp: 	dir.app + '/javascript/angular',
         js:             dir.app + '/javascript',
+        assets:             dir.app + '/assets/**/*',
         img:            dir.app + '/images/**/*',
         jsonData:       dir.app + '/data'
     },
@@ -58,6 +59,7 @@ var config = {
         css:            dir.dest + '/css',
         fonts:          dir.dest + '/css/fonts',
         js:             dir.dest + '/javascript',
+        assets:         dir.dest + '/assets',
         img :           dir.dest + '/images',
         jsonData:       dir.dest + '/data'
     }
@@ -159,6 +161,13 @@ gulp.task('img', function() {
 		.pipe(gulp.dest(config.dest.img));
 });
 
+// assets copy task
+gulp.task('assets', function() {
+    return gulp.src(config.src.assets)
+        .pipe(plumber({errorHandler: onError}))
+        .pipe(gulp.dest(config.dest.assets));
+});
+
 gulp.task('ng-scripts', function() {
 	return gulp.src(paths.ng)
     	.pipe(plumber({errorHandler: onError}))
@@ -251,7 +260,7 @@ gulp.task('open', function() {
 
 //
 gulp.task('build', function(cb) {
-	runSequence('jsvendor', 'scripts', 'ng-scripts', ['swig', 'less', 'cssAssets', 'img', 'jsonData'], cb);
+	runSequence('jsvendor', 'scripts', 'ng-scripts', ['swig', 'less', 'cssAssets', 'img', 'jsonData', 'assets'], cb);
 });
 
 gulp.task('serve', function(cb) {
