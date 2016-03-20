@@ -102,7 +102,8 @@ Packed24.Game.prototype = {
           var piece = pieces.create((x * 128) + 3, (y * 128) + 3, puzzle_pieces[position]);
           piece.scale.setTo(0.34, 0.5);
           piece.meta = {
-              id: id
+              id: id,
+              position: position
           }
       };
   },
@@ -144,6 +145,10 @@ function movePlayer(playerObj, direction) {
 function collectPiece(player, piece) {
     piece.kill();
     gs.collect(piece.meta.id);
+    chrome.runtime.sendMessage({
+        cmd: "collectedPiece",
+        piecePosition: piece.meta.position
+    });
 }
 
 function render() {

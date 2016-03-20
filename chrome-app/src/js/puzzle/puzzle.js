@@ -1,6 +1,16 @@
 (function ($) {
     $(function(){
 
+        chrome.runtime.onMessage.addListener(function(msg, sender) {
+           
+           console.log("in puzzle got " + msg);
+            console.log(msg);
+
+            $("[data-id='" + msg.piecePosition + "']").show();
+        });
+
+        $("[data-id]").hide();
+
         var thresHold = "50%",
         faces = $(".piece"),
         droppables = $(".droppables span");
