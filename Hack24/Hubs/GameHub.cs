@@ -1,5 +1,6 @@
 ﻿using System;
 using Hack24.Engine;
+using Newtonsoft.Json;
 
 namespace Hack24.Hubs
 {
@@ -94,10 +95,10 @@ namespace Hack24.Hubs
             Clients.All.playerJoined(player);
         }
 
-        public object GetGameState()
+        public string GetGameState()
         {
             var state = GameCoordinator.Instance.Game.GetGameState();
-            return state;
+            return JsonConvert.SerializeObject(state);
         }
     }
 }

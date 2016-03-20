@@ -26,6 +26,7 @@ var gs = (function($) {
     };
 
     client.placeMazePiece = function (mazePieceId, xCoordinate, yCoordinate, encodedImage) {
+        alert('MazePiece- image:' + encodedImage);
         if (typeof gs.onMazePlaceAdded === 'function')
             gs.onMazePlaceAdded(mazePieceId, xCoordinate, yCoordinate, encodedImage);
     }
