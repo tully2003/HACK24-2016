@@ -154,9 +154,9 @@ namespace Hack24
                         }   // ensures there is not already a piece or a wall there
                         while (_pieces.Any(p => p.Location.X == x && p.Location.Y == y) || _board[y][x] == 1);
 
-                        var p = new Piece(position, x, y);
-                        _pieces.Add(p);
-                        NotifyOfPieceAdded(p.Id, position, x, y);
+                        var piece = new Piece(position, x, y);
+                        _pieces.Add(piece);
+                        NotifyOfPieceAdded(piece.Id, position, x, y);
                     }
 
                     
