@@ -6,10 +6,11 @@
            console.log("in puzzle got " + msg);
             console.log(msg);
 
-            $("[data-id='" + msg.piecePosition + "']").show();
+            var $el = $("[data-id='" + msg.piecePosition + "']");
+            $el.css("opacity", "1");
         });
 
-        $("[data-id]").hide();
+        $("[data-id]").css("opacity", "0");
 
         var thresHold = "50%",
         faces = $(".piece"),
