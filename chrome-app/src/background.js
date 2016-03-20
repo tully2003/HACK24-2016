@@ -1,10 +1,5 @@
 chrome.app.runtime.onLaunched.addListener(function() {
 
-    chrome.app.window.create("pages/Start.html", {
-        'id': 'primary',
-        'state': 'fullscreen'
-    });
-
    chrome.system.display.getInfo(function(displays) {
 
 	var display = displays[1];
@@ -20,12 +15,13 @@ chrome.app.runtime.onLaunched.addListener(function() {
         'state': 'fullscreen'
     });
 
+/*
     chrome.app.window.create("pages/puzzle.html", {
         'id': 'secondary',
             'state': 'fullscreen'
     });
 
-/*
+
 	chrome.app.window.create("pages/Start.html", {
 	    'id': 'primary',
             'state': 'fullscreen'
